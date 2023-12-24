@@ -4,6 +4,7 @@ namespace App\Livewire\Variation;
 
 use Livewire\Component;
 use App\Models\Colors;
+use App\Models\Products;
 use Livewire\Attributes\Validate;
 use Carbon\Carbon;
 
@@ -33,7 +34,8 @@ class Color extends Component
     }
     public function render()
     {
+        $color_sec = Products::where('id',$this->prduct)->first();
         $colors = Colors::where('product_id',$this->prduct)->get();
-        return view('livewire.variation.color',compact('colors'));
+        return view('livewire.variation.color',compact('colors','color_sec'));
     }
 }
