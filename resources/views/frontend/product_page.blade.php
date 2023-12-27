@@ -174,32 +174,7 @@
 
                                 <div class="item_attribute">
                                     <form action="#">
-                                        <div class="row">
-                                            <div class="col col-md-6">
-                                                <div class="select_option clearfix">
-                                                    <h4 class="input_title">Size *</h4>
-                                                    <select>
-                                                        <option data-display="- Please select -">Choose A Option</option>
-                                                        <option value="1">Some option</option>
-                                                        <option value="2">Another option</option>
-                                                        <option value="3" disabled>A disabled option</option>
-                                                        <option value="4">Potato</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-6">
-                                                <div class="select_option clearfix">
-                                                    <h4 class="input_title">Color *</h4>
-                                                    <select>
-                                                        <option data-display="- Please select -">Choose A Option</option>
-                                                        <option value="1">Some option</option>
-                                                        <option value="2">Another option</option>
-                                                        <option value="3" disabled>A disabled option</option>
-                                                        <option value="4">Potato</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @livewire('selection.select',['product_details' => $product])
                                     </div>
 
                                     <div class="quantity_wrap">

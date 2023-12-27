@@ -37,6 +37,11 @@ class Quantity extends Component
             'variation_id' => $this->variant,
             'quantity' => $this->quantity,
         ]);
+
+        $this->reset('color','size','variant');
+    }
+    public function delete($id){
+        Quantites::where('id',$id)->delete();
     }
     public function render()
     {

@@ -16,7 +16,7 @@ class ProductsController extends Controller
     public function index()
     {
         $products = products::all();
-        // return $category = Products::find(1)->catetoprod;
+        // return $category = Products::find(7)->catetoprod;
         return view('dashboard.products.index',compact('products'));
     }
 
