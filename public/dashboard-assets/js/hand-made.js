@@ -3,7 +3,19 @@
 
 /* Spinner animation */
 
-let load_btn = document.querySelector("#btn-loading");
+let load_btn = document.querySelectorAll("#btn-loading");
+Array.from(load_btn).map((element)=>{
+    let load_text = element.firstElementChild;
+    let spin_loading = element.lastElementChild;
+    element.addEventListener('click',(e)=>{
+        load_text.setAttribute('class','d-none');
+        spin_loading.classList.replace('d-none','d-block');
+        setTimeout(()=>{
+            spin_loading.classList.replace('d-block','d-none');
+            load_text.classList.replace('d-none','d-block');
+        },6000)
+    })
+});
 let load_text = load_btn.firstElementChild;
 let spin_loading = load_btn.lastElementChild;
 load_btn.addEventListener('click',(e)=>{

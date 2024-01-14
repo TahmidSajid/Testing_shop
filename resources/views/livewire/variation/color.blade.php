@@ -21,7 +21,7 @@
                                     <div class="example">
                                         <p class="mb-1">Color Code</p>
                                         <input type="text" class="form-control" id="color_code"
-                                            wire:model.live="code" readonly required>
+                                            wire:model="code" readonly required>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-6 mb-3">
@@ -64,18 +64,45 @@
                                     @forelse ($colors as $color)
                                         <tr>
                                             <th>{{ $loop->iteration }}</th>
-                                            <td id="color_code_table">{{ $color->color_code }}</td>
-                                            <td id="color_name_table"></td>
+
+                                            <td>{{ $color->color_code }}</td>
+
+                                            <td>
+                                                {{ $color_name->name($color->color_code)['name'] }}
+                                            </td>
+
                                             <td>
                                                 <div
                                                     style="border-radius: 50%; height:65px; width: 65px; background-color:{{ $color->color_code }}; margin:0 auto;">
                                                 </div>
                                             </td>
                                             <td>
+
+                                                {{--*************** PHP Start ***************--}}
+                                                <?php
+                                                $status = false;
+                                                foreach ($color_used as $key => $value) {
+                                                    if($value == $color->id){
+                                                        $status = true;
+                                                        break;
+                                                    }
+                                                }
+                                                if($status===false){
+                                                ?>
+                                                {{--*************** PHP end ***************--}}
                                                 <button type="button" wire:click = "delete({{ $color->id }})"
                                                     class="btn btn-sm btn-danger" style="border-radius: 50%">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </button>
+                                                {{--*************** PHP Start ***************--}}
+                                                <?php
+                                                }else{
+                                                ?>
+                                                    <h5>Its in use</h5>
+                                                <?php
+                                                }
+                                                ?>
+
                                                 <button type="button" wire:click= "editColor({{ $color->id }})"
                                                     class="btn btn-sm btn-info" style="border-radius: 50%"
                                                     data-toggle="modal" data-target="#editColor">

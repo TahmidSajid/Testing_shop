@@ -8,6 +8,7 @@ use App\Models\Colors;
 use App\Models\Products;
 use App\Models\Quantites;
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class Quantity extends Component
 {
@@ -38,11 +39,14 @@ class Quantity extends Component
             'quantity' => $this->quantity,
         ]);
 
-        $this->reset('color','size','variant');
+        $this->reset('color','size','variant','quantity');
+        $this->dispatch('q_update');
     }
     public function delete($id){
         Quantites::where('id',$id)->delete();
+        $this->dispatch('q_update');
     }
+    #[On('redering')]
     public function render()
     {
         $product = Products::where('id',$this->prduct)->first();

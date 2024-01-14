@@ -15,6 +15,7 @@
                                         <label class="mr-sm-2">Color :</label>
                                     </div>
                                 </div>
+
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="col-auto my-1">
                                         <select class="mr-sm-2 default-select" id="inlineFormCustomSelect"
@@ -23,7 +24,8 @@
                                             @forelse ($color_select as $color)
                                                 <option value= "{{ $color->id }}"
                                                     style="background-color: {{ $color->color_code }} ">
-                                                    {{ $color->color_code }}</option>
+                                                    {{ $color->color_code }}
+                                                </option>
                                             @empty
                                             @endforelse
                                         </select>
@@ -123,7 +125,8 @@
                                         @endif
 
                                         @if ($product->color == 'enable')
-                                            <td style="background-color: {{ $quantity->getColor->color_code }}">{{ $quantity->getColor->color_code }}</td>
+                                            <td style="background-color: {{ $quantity->getColor->color_code }}">
+                                                {{ $quantity->getColor->color_code }}</td>
                                         @endif
                                         @if ($product->variant == 'enable')
                                             <td>{{ $quantity->getVariant->variant }}</td>

@@ -53,10 +53,30 @@
                                             <th>{{ $loop->iteration }}</th>
                                             <td>{{ $size->size }}</td>
                                             <td>
+                                            {{--*************** PHP Start ***************--}}
+                                                <?php
+                                                $status = false;
+                                                foreach ($size_used as $key => $value) {
+                                                    if($value == $size->id){
+                                                        $status = true;
+                                                        break;
+                                                    }
+                                                }
+                                                if($status===false){
+                                                ?>
+                                                {{--*************** PHP end ***************--}}
                                                 <button type="button" wire:click = "delete({{ $size->id }})"
                                                     class="btn btn-sm btn-danger">
                                                     <i class="fa fa-close"></i>
                                                 </button>
+                                                {{--*************** PHP Start ***************--}}
+                                                <?php
+                                                }else{
+                                                ?>
+                                                    <h5>Its in use</h5>
+                                                <?php
+                                                }
+                                                ?>
                                             </td>
                                         </tr>
                                     @empty

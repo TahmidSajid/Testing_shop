@@ -49,10 +49,32 @@
                                             <th>{{ $loop->iteration }}</th>
                                             <td>{{ $variant->variant }}</td>
                                             <td>
+
+                                                {{--*************** PHP Start ***************--}}
+                                                <?php
+                                                $status = false;
+                                                foreach ($variant_used as $key => $value) {
+                                                    if($value == $variant->id){
+                                                        $status = true;
+                                                        break;
+                                                    }
+                                                }
+                                                if($status===false){
+                                                ?>
+                                                {{--*************** PHP end ***************--}}
                                                 <button type="button" wire:click = "delete({{ $variant->id }})"
                                                     class="btn btn-sm btn-danger" style="border-radius: 50%">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </button>
+                                                {{--*************** PHP Start ***************--}}
+                                                <?php
+                                                }else{
+                                                ?>
+                                                    <h5>Its in use</h5>
+                                                <?php
+                                                }
+                                                ?>
+
                                                 {{-- <button type="button" wire:click= "editColor({{ $variant->id }})"
                                                 class="btn btn-sm btn-info" style="border-radius: 50%"
                                                 data-toggle="modal" data-target="#editColor">
