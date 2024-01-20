@@ -74,11 +74,22 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Gallery Images</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" multiple name="gallery_image[]">
+                                        <label class="custom-file-label">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Variations</label>
                             <div class="col-sm-3">
                                 <div class="row">
                                     <div class="col-lg-4 mt-3">
-                                        <label class="radio-inline">Size</label>
+                                        <label class="radio-inline">Size:</label>
                                     </div>
                                     <div class="col-lg-8">
                                         <label class="radio-inline mr-3"><input type="radio" name="size"
@@ -91,7 +102,7 @@
                             <div class="col-sm-3">
                                 <div class="row">
                                     <div class="col-lg-4 mt-3">
-                                        <label class="radio-inline">Color</label>
+                                        <label class="radio-inline">Color:</label>
                                     </div>
                                     <div class="col-lg-8">
                                         <label class="radio-inline mr-3"><input type="radio" name="color"
@@ -104,7 +115,7 @@
                             <div class="col-sm-3">
                                 <div class="row">
                                     <div class="col-lg-4 mt-3">
-                                        <label class="radio-inline">Variant</label>
+                                        <label class="radio-inline">Variant:</label>
                                     </div>
                                     <div class="col-lg-8">
                                         <label class="radio-inline mr-3"><input type="radio" name="variant"

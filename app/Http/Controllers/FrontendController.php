@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\categories;
 use Illuminate\Support\Facades\Mail;
 Use App\Mail\ContactMail;
+use App\Models\GalleryImages;
 use App\Models\Products;
 
 class FrontendController extends Controller
@@ -64,7 +65,10 @@ class FrontendController extends Controller
     public function product_view($id){
 
         $product = Products::where('id',$id)->first();
-        return view('frontend.product_page',compact('product'));
+        $related_category = Products::select('category_id')->where('id',$id)->first();
+        $related_products = Products::where('category_id',$related_category->category_id)->limit(4)->get();
+        $gallery_images = GalleryImages::where('product_id',$id)->get();
+        return view('frontend.product_page',compact('product','related_products','gallery_images'));
         ;
     }
 }

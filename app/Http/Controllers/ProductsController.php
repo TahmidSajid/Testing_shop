@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use App\Models\categories;
+use App\Models\GalleryImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -44,7 +45,8 @@ class ProductsController extends Controller
             'additional_description' => 'required',
             'thumbnail' => 'required|file',
         ]);
-        $products = Products::create($request->except('_token'));
+
+        $products = Products::create($request->except('_token','gallery_image'));
 
         if($request->hasFile('thumbnail')){
             $new_name = $request->name.time().".".$request->file('thumbnail')->getClientOriginalExtension();
@@ -54,6 +56,18 @@ class ProductsController extends Controller
                 'thumbnail'=> $new_name,
             ]);
         };
+
+        if($request->hasFile('gallery_image')){
+            foreach ($request->file('gallery_image') as $key => $x) {
+                $gallery_name = $request->name.time().$key.".".$x->getClientOriginalExtension();
+                $img = Image::make($x)->resize(300,200);
+                $img->save(base_path('public/uploads/gallery_images/'.$gallery_name),80);
+                GalleryImages::insert([
+                    'gallery_image' => $gallery_name,
+                    'product_id' => $products->id,
+                ]);
+            }
+        }
         return back();
     }
 

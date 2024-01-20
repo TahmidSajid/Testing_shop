@@ -12,14 +12,14 @@
                             @if ($product->color == 'enable')
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="col-auto my-1">
-                                        <label class="mr-sm-2">Color :</label>
+                                        <label class="mr-sm-2">Color :{{ $color }}</label>
                                     </div>
                                 </div>
 
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="col-auto my-1">
                                         <select class="mr-sm-2 default-select" id="inlineFormCustomSelect"
-                                            wire:model ='color'>
+                                            wire:model.live ='color'>
                                             <option selected>Choose Color</option>
                                             @forelse ($color_select as $color)
                                                 <option value= "{{ $color->id }}"
@@ -36,13 +36,13 @@
                             @if ($product->size == 'enable')
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="col-auto my-1">
-                                        <label class="mr-sm-2">Size</label>
+                                        <label class="mr-sm-2">Size {{ $size }}</label>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-4">
                                     <div class="col-auto my-1">
                                         <select class="mr-sm-2 default-select" id="inlineFormCustomSelect"
-                                            wire:model ='size'>
+                                            wire:model.live ='size'>
                                             <option selected>Choose Size</option>
                                             @forelse ($size_select as $size)
                                                 <option value= "{{ $size->id }}">{{ $size->size }}</option>
@@ -56,13 +56,13 @@
                             @if ($product->variant == 'enable')
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="col-auto my-1">
-                                        <label class="mr-sm-2">Variant</label>
+                                        <label class="mr-sm-2">Variant {{ $variant }}</label>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="col-auto my-1">
                                         <select class="mr-sm-2 default-select" id="inlineFormCustomSelect"
-                                            wire:model ='variant'>
+                                            wire:model.live='variant'>
                                             <option selected>Choose Variant</option>
                                             @forelse ($varint_select as $variant)
                                                 <option value= "{{ $variant->id }}">{{ $variant->variant }}</option>
