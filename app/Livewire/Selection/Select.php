@@ -2,8 +2,11 @@
 
 namespace App\Livewire\Selection;
 
+use App\Models\Colors;
 use App\Models\Quantites;
 use App\Models\Products;
+use App\Models\Sizes;
+use App\Models\Variants;
 use Livewire\Attributes\Computed;
 use ourcodeworld\NameThatColor\ColorInterpreter as NameThatColor;
 use Livewire\Component;
@@ -13,8 +16,11 @@ class Select extends Component
 {
     public $product_id ;
     public $size_id ;
+    public $size_name ;
     public $variant_id ;
+    public $variant_name ;
     public $color_id ;
+    public $selected_color_name ;
     public $permit ;
 
     public function mount(){
@@ -27,6 +33,7 @@ class Select extends Component
 
     public function getSize($id){
         $this->size_id = $id;
+        $this->size_name = Sizes::find($id)->size;
     }
 
     #[Computed()]
@@ -41,6 +48,7 @@ class Select extends Component
 
     public function getVariant($id){
         $this->variant_id = $id;
+        $this->variant_name = Variants::find($id)->variant;
     }
 
     #[Computed()]
@@ -58,6 +66,8 @@ class Select extends Component
 
     public function getColor($id){
         $this->color_id = $id;
+        $this->selected_color_name = new NameThatColor();
+        $this->selected_color_name = $this->selected_color_name->name(Colors::find($id)->color_code)['name'];
     }
 
     public function save(){
