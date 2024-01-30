@@ -1,75 +1,7 @@
 @extends('layouts.frontend')
 @section('content')
-    <!-- sidebar cart - start
-                ================================================== -->
-    <div class="sidebar-menu-wrapper">
-        <div class="cart_sidebar">
-            <button type="button" class="close_btn"><i class="fal fa-times"></i></button>
-            <ul class="cart_items_list ul_li_block mb_30 clearfix">
-                <li>
-                    <div class="item_image">
-                        <img src="{{ asset('frontend-assets') }}/images/cart/cart_img_1.jpg" alt="image_not_found">
-                    </div>
-                    <div class="item_content">
-                        <h4 class="item_title">Yellow Blouse</h4>
-                        <span class="item_price">$30.00</span>
-                    </div>
-                    <button type="button" class="remove_btn"><i class="fal fa-trash-alt"></i></button>
-                </li>
-                <li>
-                    <div class="item_image">
-                        <img src="{{ asset('frontend-assets') }}/images/cart/cart_img_2.jpg" alt="image_not_found">
-                    </div>
-                    <div class="item_content">
-                        <h4 class="item_title">Yellow Blouse</h4>
-                        <span class="item_price">$30.00</span>
-                    </div>
-                    <button type="button" class="remove_btn"><i class="fal fa-trash-alt"></i></button>
-                </li>
-                <li>
-                    <div class="item_image">
-                        <img src="{{ asset('frontend-assets') }}/images/cart/cart_img_3.jpg" alt="image_not_found">
-                    </div>
-                    <div class="item_content">
-                        <h4 class="item_title">Yellow Blouse</h4>
-                        <span class="item_price">$30.00</span>
-                    </div>
-                    <button type="button" class="remove_btn"><i class="fal fa-trash-alt"></i></button>
-                </li>
-            </ul>
-
-            <ul class="total_price ul_li_block mb_30 clearfix">
-                <li>
-                    <span>Subtotal:</span>
-                    <span>$90</span>
-                </li>
-                <li>
-                    <span>Vat 5%:</span>
-                    <span>$4.5</span>
-                </li>
-                <li>
-                    <span>Discount 20%:</span>
-                    <span>- $18.9</span>
-                </li>
-                <li>
-                    <span>Total:</span>
-                    <span>$75.6</span>
-                </li>
-            </ul>
-
-            <ul class="btns_group ul_li_block clearfix">
-                <li><a class="btn btn_primary" href="cart.html">View Cart</a></li>
-                <li><a class="btn btn_secondary" href="checkout.html">Checkout</a></li>
-            </ul>
-        </div>
-
-        <div class="cart_overlay"></div>
-    </div>
-    <!-- sidebar cart - end
-                ================================================== -->
-
     <!-- slider_section - start
-                ================================================== -->
+                        ================================================== -->
     <section class="slider_section">
         <div class="container">
             <div class="row">
@@ -126,10 +58,10 @@
         </div>
     </section>
     <!-- slider_section - end
-                ================================================== -->
+                        ================================================== -->
 
     <!-- policy_section - start
-                ================================================== -->
+                        ================================================== -->
     <section class="policy_section">
         <div class="container">
             <div class="row">
@@ -190,11 +122,11 @@
 
     </section>
     <!-- policy_section - end
-                ================================================== -->
+                        ================================================== -->
 
 
     <!-- products-with-sidebar-section - start
-                ================================================== -->
+                        ================================================== -->
     <section class="products-with-sidebar-section">
         <div class="container">
             <div class="row">
@@ -206,52 +138,59 @@
                             </div>
                         </div>
                         <div class="product-area clearfix">
-                            @foreach ($products as $product )
-                            <div class="grid">
-                                <div class="product-pic">
-                                    <img src="{{ asset("uploads/thumbnail") }}/{{ $product->thumbnail }}" alt="">
-                                    @if ($product->discount_price)
-                                        <span class="theme-badge-2">{{ round(100-($product->discount_price/$product->regular_price)*100) }}% off</span>
-                                    @endif
-                                </div>
-                                <div class="details">
-                                    <h4><a href="{{ route('product_view',$product->id) }}">{{ $product->name }}</a></h4>
-                                    <p><a href="{{ route('product_view',$product->id) }}">{{ Str::limit($product->short_description,20) }} </a></p>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                    </div>
-                                    <span class="price">
-                                        <ins>
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol">৳</span>@if ($product->discount_price)
-                                                        {{ $product->discount_price }}
-                                                    @else
-                                                        {{ $product->regular_price }}
-                                                    @endif
-                                                </bdi>
-                                            </span>
-                                        </ins>
+                            @foreach ($products as $product)
+                                <div class="grid">
+                                    <div class="product-pic">
+                                        <img src="{{ asset('uploads/thumbnail') }}/{{ $product->thumbnail }}"
+                                            alt="">
                                         @if ($product->discount_price)
-                                        <del aria-hidden="true">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol">৳</span>{{ $product->regular_price }}
-                                                </bdi>
-                                            </span>
-                                        </del>
+                                            <span
+                                                class="theme-badge-2">{{ round(100 - ($product->discount_price / $product->regular_price) * 100) }}%
+                                                off</span>
                                         @endif
+                                    </div>
+                                    <div class="details">
+                                        <h4><a href="{{ route('product_view', $product->id) }}">{{ $product->name }}</a>
+                                        </h4>
+                                        <p><a href="{{ route('product_view', $product->id) }}">{{ Str::limit($product->short_description, 20) }}
+                                            </a></p>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <span class="price">
+                                            <ins>
+                                                <span class="woocommerce-Price-amount amount">
+                                                    <bdi>
+                                                        <span class="woocommerce-Price-currencySymbol">৳</span>
+                                                        @if ($product->discount_price)
+                                                            {{ $product->discount_price }}
+                                                        @else
+                                                            {{ $product->regular_price }}
+                                                        @endif
+                                                    </bdi>
+                                                </span>
+                                            </ins>
+                                            @if ($product->discount_price)
+                                                <del aria-hidden="true">
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>
+                                                            <span
+                                                                class="woocommerce-Price-currencySymbol">৳</span>{{ $product->regular_price }}
+                                                        </bdi>
+                                                    </span>
+                                                </del>
+                                            @endif
 
-                                    </span>
-                                    <div class="add-cart-area">
-                                        <button class="add-to-cart">Add to cart</button>
+                                        </span>
+                                        <div class="add-cart-area">
+                                            <button class="add-to-cart">Add to cart</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
 
                         </div>
@@ -544,11 +483,11 @@
         </div> <!-- end container  -->
     </section>
     <!-- products-with-sidebar-section - end
-                ================================================== -->
+                        ================================================== -->
 
 
     <!-- promotion_section - start
-                ================================================== -->
+                        ================================================== -->
     <section class="promotion_section">
         <div class="container">
             <div class="row promotion_banner_wrap">
@@ -583,10 +522,10 @@
         </div>
     </section>
     <!-- promotion_section - end
-                ================================================== -->
+                        ================================================== -->
 
     <!-- new_arrivals_section - start
-                ================================================== -->
+                        ================================================== -->
     <section class="new_arrivals_section section_space">
         <div class="container">
             <div class="sec-title-link">
@@ -723,10 +662,10 @@
         </div>
     </section>
     <!-- new_arrivals_section - end
-                ================================================== -->
+                        ================================================== -->
 
     <!-- brand_section - start
-                ================================================== -->
+                        ================================================== -->
     <section class="brand_section pb-0">
         <div class="container">
             <div class="brand_carousel">
@@ -764,10 +703,10 @@
         </div>
     </section>
     <!-- brand_section - end
-                ================================================== -->
+                        ================================================== -->
 
     <!-- viewed_products_section - start
-                ================================================== -->
+                        ================================================== -->
     <section class="viewed_products_section section_space">
         <div class="container">
 
@@ -1001,10 +940,10 @@
         </div>
     </section>
     <!-- viewed_products_section - end
-                ================================================== -->
+                        ================================================== -->
 
     <!-- newsletter_section - start
-                ================================================== -->
+                        ================================================== -->
     <section class="newsletter_section">
         <div class="container">
             <div class="row align-items-center">
@@ -1024,5 +963,5 @@
         </div>
     </section>
     <!-- newsletter_section - end
-                ================================================== -->
+                        ================================================== -->
 @endsection

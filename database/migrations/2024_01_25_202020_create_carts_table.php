@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('variant_id')->nullable();
             $table->string('color_id')->nullable();
             $table->string('user_id')->nullable();
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

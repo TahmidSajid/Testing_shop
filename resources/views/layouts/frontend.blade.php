@@ -1,47 +1,49 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Stowaa -  Ecommerce HTML Template</title>
-    <link rel="shortcut icon" href="{{asset('frontend-assets')}}/images/logo/favourite_icon_1.png">
+    <title>Stowaa - Ecommerce HTML Template</title>
+    <link rel="shortcut icon" href="{{ asset('frontend-assets') }}/images/logo/favourite_icon_1.png">
 
     <!-- fraimwork - css include -->
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend-assets')}}/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend-assets') }}/css/bootstrap.min.css">
 
     <!-- icon font - css include -->
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend-assets')}}/css/fontawesome.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend-assets')}}/css/stroke-gap-icons.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend-assets')}}/css/icofont.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend-assets') }}/css/fontawesome.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend-assets') }}/css/stroke-gap-icons.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend-assets') }}/css/icofont.css">
 
     <!-- animation - css include -->
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend-assets')}}/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend-assets') }}/css/animate.css">
 
     <!-- carousel - css include -->
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend-assets')}}/css/slick.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend-assets')}}/css/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend-assets') }}/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend-assets') }}/css/slick-theme.css">
 
     <!-- popup - css include -->
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend-assets')}}/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend-assets') }}/css/magnific-popup.css">
 
     <!-- jquery-ui - css include -->
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend-assets')}}/css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend-assets') }}/css/jquery-ui.css">
 
     <!-- select option - css include -->
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend-assets')}}/css/nice-select.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend-assets') }}/css/nice-select.css">
 
     <!-- woocommercen - css include -->
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend-assets')}}/css/woocommerce.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend-assets') }}/css/woocommerce.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- custom - css include -->
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend-assets')}}/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend-assets') }}/css/style.css">
 </head>
 
 <body>
-
     <!-- body_wrap - start -->
     <div class="body_wrap">
 
@@ -69,7 +71,8 @@
                                 <li>
                                     <div class="select_option">
                                         <div class="flug_wrap">
-                                            <img src="{{asset('frontend-assets')}}/images/flug/flug_uk.png" alt="image_not_found">
+                                            <img src="{{ asset('frontend-assets') }}/images/flug/flug_uk.png"
+                                                alt="image_not_found">
                                         </div>
                                         <select>
                                             <option data-display="Select Option">Select Your Language</option>
@@ -96,7 +99,8 @@
                         <div class="col col-lg-3 col-md-3 col-sm-12">
                             <div class="brand_logo">
                                 <a class="brand_link" href="index.html">
-                                    <img src="{{asset('frontend-assets')}}/images/logo/logo_1x.png" srcset="{{asset('frontend-assets')}}/images/logo/logo_2x.png 2x" alt>
+                                    <img src="{{ asset('frontend-assets') }}/images/logo/logo_1x.png"
+                                        srcset="{{ asset('frontend-assets') }}/images/logo/logo_2x.png 2x" alt>
                                 </a>
                             </div>
                         </div>
@@ -123,24 +127,33 @@
                             </form>
                         </div>
                         <div class="col col-lg-3 col-md-3 col-sm-12">
-                            <button class="mobile_menu_btn2 navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_menu_dropdown" aria-controls="main_menu_dropdown" aria-expanded="false" aria-label="Toggle navigation">
+                            <button class="mobile_menu_btn2 navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#main_menu_dropdown" aria-controls="main_menu_dropdown"
+                                aria-expanded="false" aria-label="Toggle navigation">
                                 <i class="fal fa-bars"></i>
                             </button>
                             <button type="button" class="cart_btn">
-                               <ul class="header_icons_group ul_li_right">
+                                <ul class="header_icons_group ul_li_right">
                                     <li>
                                         <a href="wishlist.html">
-                                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" stroke="#051d43" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#2329D6"> <title>Favourite</title> <path d="M12,21 L10.55,19.7051771 C5.4,15.1242507 2,12.1029973 2,8.39509537 C2,5.37384196 4.42,3 7.5,3 C9.24,3 10.91,3.79455041 12,5.05013624 C13.09,3.79455041 14.76,3 16.5,3 C19.58,3 22,5.37384196 22,8.39509537 C22,12.1029973 18.6,15.1242507 13.45,19.7149864 L12,21 Z"/> </svg>
+                                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="30px"
+                                                height="30px" viewBox="0 0 24 24" stroke="#051d43" stroke-width="1"
+                                                stroke-linecap="square" stroke-linejoin="miter" fill="none"
+                                                color="#2329D6">
+                                                <title>Favourite</title>
+                                                <path
+                                                    d="M12,21 L10.55,19.7051771 C5.4,15.1242507 2,12.1029973 2,8.39509537 C2,5.37384196 4.42,3 7.5,3 C9.24,3 10.91,3.79455041 12,5.05013624 C13.09,3.79455041 14.76,3 16.5,3 C19.58,3 22,5.37384196 22,8.39509537 C22,12.1029973 18.6,15.1242507 13.45,19.7149864 L12,21 Z" />
+                                            </svg>
                                             <span class="wishlist_counter">3</span>
                                         </a>
                                     </li>
                                     <li>
                                         <span class="cart_icon">
                                             <i class="icon icon-ShoppingCart"></i>
-                                            <small class="cart_counter">3</small>
+                                            <small class="cart_counter">{{ App\Models\Cart::where('user_id',Auth::id())->get()->count() }}</small>
                                         </span>
                                     </li>
-                               </ul>
+                                </ul>
                             </button>
                         </div>
                     </div>
@@ -152,24 +165,43 @@
                     <div class="row align-items-center">
                         <div class="col col-md-3">
                             <div class="allcategories_dropdown">
-                                <button class="allcategories_btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#allcategories_collapse" aria-expanded="false" aria-controls="allcategories_collapse">
-                                    <svg role="img" xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" viewBox="0 0 24 24" aria-labelledby="statsIconTitle" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" color="#000"> <title id="statsIconTitle">Stats</title> <path d="M6 7L15 7M6 12L18 12M6 17L12 17"/> </svg>
+                                <button class="allcategories_btn collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#allcategories_collapse" aria-expanded="false"
+                                    aria-controls="allcategories_collapse">
+                                    <svg role="img" xmlns="http://www.w3.org/2000/svg" width="32px"
+                                        height="32px" viewBox="0 0 24 24" aria-labelledby="statsIconTitle"
+                                        stroke="#000" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" fill="none" color="#000">
+                                        <title id="statsIconTitle">Stats</title>
+                                        <path d="M6 7L15 7M6 12L18 12M6 17L12 17" />
+                                    </svg>
                                     Browse categories
                                 </button>
                                 <div class="allcategories_collapse collapse" id="allcategories_collapse">
                                     <div class="card card-body">
                                         <ul class="allcategories_list ul_li_block">
-                                            <li><a href="shop_grid.html"><i class="icon icon-Starship"></i> New Arrival Products</a></li>
-                                            <li><a href="shop_list.html"><i class="icon icon-WorldWide"></i> Most Popular Products</a></li>
-                                            <li><a href="shop_grid.html"><i class="icon icon-Star"></i> Deals of the day</a></li>
-                                            <li><a href="shop_list.html"><i class="icon icon-Phone"></i> Mobile Accessories</a></li>
-                                            <li><a href="shop_grid.html"><i class="icon icon-DesktopMonitor"></i> Computer Accessories</a></li>
-                                            <li><a href="shop_list.html"><i class="icon icon-Bulb"></i> Consumer Electronics</a></li>
-                                            <li><a href="shop_grid.html"><i class="icon icon-Car"></i> Automobiles & Motorcycles</a></li>
-                                            <li><a href="shop_list.html"><i class="icon icon-Phone"></i> Mobile Accessories</a></li>
-                                            <li><a href="shop_grid.html"><i class="icon icon-DesktopMonitor"></i> Computer Accessories</a></li>
-                                            <li><a href="shop_list.html"><i class="icon icon-Bulb"></i> Consumer Electronics</a></li>
-                                            <li><a href="shop_grid.html"><i class="icon icon-Car"></i> Automobiles & Motorcycles</a></li>
+                                            <li><a href="shop_grid.html"><i class="icon icon-Starship"></i> New
+                                                    Arrival Products</a></li>
+                                            <li><a href="shop_list.html"><i class="icon icon-WorldWide"></i> Most
+                                                    Popular Products</a></li>
+                                            <li><a href="shop_grid.html"><i class="icon icon-Star"></i> Deals of the
+                                                    day</a></li>
+                                            <li><a href="shop_list.html"><i class="icon icon-Phone"></i> Mobile
+                                                    Accessories</a></li>
+                                            <li><a href="shop_grid.html"><i class="icon icon-DesktopMonitor"></i>
+                                                    Computer Accessories</a></li>
+                                            <li><a href="shop_list.html"><i class="icon icon-Bulb"></i> Consumer
+                                                    Electronics</a></li>
+                                            <li><a href="shop_grid.html"><i class="icon icon-Car"></i> Automobiles &
+                                                    Motorcycles</a></li>
+                                            <li><a href="shop_list.html"><i class="icon icon-Phone"></i> Mobile
+                                                    Accessories</a></li>
+                                            <li><a href="shop_grid.html"><i class="icon icon-DesktopMonitor"></i>
+                                                    Computer Accessories</a></li>
+                                            <li><a href="shop_list.html"><i class="icon icon-Bulb"></i> Consumer
+                                                    Electronics</a></li>
+                                            <li><a href="shop_grid.html"><i class="icon icon-Car"></i> Automobiles &
+                                                    Motorcycles</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -183,16 +215,18 @@
                                         <i class="fal fa-times"></i>
                                     </button>
                                     <ul class="main_menu_list ul_li">
-                                        <li><a class="nav-link" href="{{route('index')}}">Home</a></li>
-                                        <li><a class="nav-link" href="{{route('about')}}">About us</a></li>
+                                        <li><a class="nav-link" href="{{ route('index') }}">Home</a></li>
+                                        <li><a class="nav-link" href="{{ route('about') }}">About us</a></li>
                                         <li><a class="nav-link" href="#">Shop</a></li>
                                         <li><a class="nav-link" href="{{ route('contact') }}">Contact Us</a></li>
                                         @auth
                                             <li>
-                                                <a class="nav-link"><form action="{{ route('logout') }}" method="POST" class="">
-                                                    @csrf
-                                                    <button type="submit">Logout</button>
-                                                </form></a>
+                                                <a class="nav-link">
+                                                    <form action="{{ route('logout') }}" method="POST" class="">
+                                                        @csrf
+                                                        <button type="submit">Logout</button>
+                                                    </form>
+                                                </a>
                                             </li>
                                         @endauth
                                         {{-- <li><a class="nav-link" href="{{ route('logout') }}">LogOut</a></li> --}}
@@ -211,21 +245,28 @@
                                 @else --}}
                                 @auth
                                     <li>
-                                        <a>{{auth()->user()->name}}</a>
+                                        <a>{{ auth()->user()->name }}</a>
                                     </li>
                                 @endauth
                                 @guest
-                                <li>
-                                    <a href="{{ route('user_register') }}">Log-in/Register</a>
-                                </li>
+                                    <li>
+                                        <a href="{{ route('user_register') }}">Log-in/Register</a>
+                                    </li>
                                 @endguest
                                 {{-- @endif --}}
                                 @auth
-                                <li>
-                                    <a href="{{ route('user_dashboard') }}">
-                                        <svg role="img" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" stroke="#051d43" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#2329D6"> <title id="personIconTitle">Person</title> <path d="M4,20 C4,17 8,17 10,15 C11,14 8,14 8,9 C8,5.667 9.333,4 12,4 C14.667,4 16,5.667 16,9 C16,14 13,14 14,15 C16,17 20,17 20,20"/> </svg>
-                                    </a>
-                                </li>
+                                    <li>
+                                        <a href="{{ route('user_dashboard') }}">
+                                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="30px"
+                                                height="30px" viewBox="0 0 24 24" stroke="#051d43" stroke-width="1"
+                                                stroke-linecap="square" stroke-linejoin="miter" fill="none"
+                                                color="#2329D6">
+                                                <title id="personIconTitle">Person</title>
+                                                <path
+                                                    d="M4,20 C4,17 8,17 10,15 C11,14 8,14 8,9 C8,5.667 9.333,4 12,4 C14.667,4 16,5.667 16,9 C16,14 13,14 14,15 C16,17 20,17 20,20" />
+                                            </svg>
+                                        </a>
+                                    </li>
                                 @endauth
                             </ul>
                         </div>
@@ -235,7 +276,42 @@
         </header>
         <!-- header_section - end
         ================================================== -->
+        <!-- sidebar cart - start
+                ================================================== -->
+        <div class="sidebar-menu-wrapper">
+            <div class="cart_sidebar">
+                <button type="button" class="close_btn"><i class="fal fa-times"></i></button>
+                @livewire('side-cart')
 
+                <ul class="total_price ul_li_block mb_30 clearfix">
+                    <li>
+                        <span>Subtotal:</span>
+                        <span>$90</span>
+                    </li>
+                    <li>
+                        <span>Vat 5%:</span>
+                        <span>$4.5</span>
+                    </li>
+                    <li>
+                        <span>Discount 20%:</span>
+                        <span>- $18.9</span>
+                    </li>
+                    <li>
+                        <span>Total:</span>
+                        <span>$75.6</span>
+                    </li>
+                </ul>
+
+                <ul class="btns_group ul_li_block clearfix">
+                    <li><a class="btn btn_primary" href="cart.html">View Cart</a></li>
+                    <li><a class="btn btn_secondary" href="checkout.html">Checkout</a></li>
+                </ul>
+            </div>
+
+            <div class="cart_overlay"></div>
+        </div>
+        <!-- sidebar cart - end
+        ================================================== -->
         <!-- main body - start
         ================================================== -->
         <main>
@@ -254,7 +330,9 @@
                             <div class="footer_widget footer_about">
                                 <div class="brand_logo">
                                     <a class="brand_link" href="index.html">
-                                        <img src="{{asset('frontend-assets')}}/images/logo/logo_1x.png" srcset="{{asset('frontend-assets')}}/images/logo/logo_2x.png 2x" alt="logo_not_found">
+                                        <img src="{{ asset('frontend-assets') }}/images/logo/logo_1x.png"
+                                            srcset="{{ asset('frontend-assets') }}/images/logo/logo_2x.png 2x"
+                                            alt="logo_not_found">
                                     </a>
                                 </div>
                                 <ul class="social_round ul_li">
@@ -297,7 +375,8 @@
                             <div class="footer_widget footer_contact">
                                 <h3 class="footer_widget_title text-uppercase">Contact Onfo</h3>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt.
                                 </p>
                                 <div class="hotline_wrap">
                                     <div class="footer_hotline">
@@ -314,8 +393,12 @@
                                     </div>
                                 </div>
                                 <ul class="store_btns_group ul_li">
-                                    <li><a href="#!"><img src="{{asset('frontend-assets')}}/images/app_store.png" alt="app_store"></a></li>
-                                    <li><a href="#!"><img src="{{asset('frontend-assets')}}/images/play_store.png" alt="play_store"></a></li>
+                                    <li><a href="#!"><img
+                                                src="{{ asset('frontend-assets') }}/images/app_store.png"
+                                                alt="app_store"></a></li>
+                                    <li><a href="#!"><img
+                                                src="{{ asset('frontend-assets') }}/images/play_store.png"
+                                                alt="play_store"></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -335,7 +418,8 @@
                         <div class="col col-md-6">
                             <div class="payment_method">
                                 <h4>Payment:</h4>
-                                <img src="{{asset('frontend-assets')}}/images/payments_icon.png" alt="image_not_found">
+                                <img src="{{ asset('frontend-assets') }}/images/payments_icon.png"
+                                    alt="image_not_found">
                             </div>
                         </div>
                     </div>
@@ -350,23 +434,24 @@
     <!-- body_wrap - end -->
 
     <!-- fraimwork - jquery include -->
-    <script src="{{asset('frontend-assets')}}/js/jquery.min.js"></script>
-    <script src="{{asset('frontend-assets')}}/js/popper.min.js"></script>
-    <script src="{{asset('frontend-assets')}}/js/bootstrap.min.js"></script>
+    <script src="{{ asset('frontend-assets') }}/js/jquery.min.js"></script>
+    <script src="{{ asset('frontend-assets') }}/js/popper.min.js"></script>
+    <script src="{{ asset('frontend-assets') }}/js/bootstrap.min.js"></script>
 
     <!-- carousel - jquery plugins collection -->
-    <script src="{{asset('frontend-assets')}}/js/jquery-plugins-collection.js"></script>
+    <script src="{{ asset('frontend-assets') }}/js/jquery-plugins-collection.js"></script>
 
     <!-- google map  -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk2HrmqE4sWSei0XdKGbOMOHN3Mm2Bf-M&ver=2.1.6"></script>
-    <script src="{{asset('frontend-assets')}}/js/gmaps.min.js"></script>
+    <script src="{{ asset('frontend-assets') }}/js/gmaps.min.js"></script>
 
     <!-- custom - main-js -->
-    <script src="{{asset('frontend-assets')}}/js/main.js"></script>
-    <script src="{{asset('frontend-assets')}}/js/main.js"></script>
+    <script src="{{ asset('frontend-assets') }}/js/main.js"></script>
+    <script src="{{ asset('frontend-assets') }}/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {!! NoCaptcha::renderJs() !!}
 
     @yield('alert')
 </body>
+
 </html>

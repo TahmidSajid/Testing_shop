@@ -122,6 +122,7 @@ class Select extends Component
             'size_id' => $this->size_id,
             'variant_id' => $this->variant_id,
             'color_id' => $this->color_id,
+            'quantity' => $this->quantity,
             'created_at' => Carbon::now(),
         ]);
     }
