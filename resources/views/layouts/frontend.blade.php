@@ -283,29 +283,7 @@
                 <button type="button" class="close_btn"><i class="fal fa-times"></i></button>
                 @livewire('side-cart')
 
-                <ul class="total_price ul_li_block mb_30 clearfix">
-                    <li>
-                        <span>Subtotal:</span>
-                        <span>$90</span>
-                    </li>
-                    <li>
-                        <span>Vat 5%:</span>
-                        <span>$4.5</span>
-                    </li>
-                    <li>
-                        <span>Discount 20%:</span>
-                        <span>- $18.9</span>
-                    </li>
-                    <li>
-                        <span>Total:</span>
-                        <span>$75.6</span>
-                    </li>
-                </ul>
 
-                <ul class="btns_group ul_li_block clearfix">
-                    <li><a class="btn btn_primary" href="cart.html">View Cart</a></li>
-                    <li><a class="btn btn_secondary" href="checkout.html">Checkout</a></li>
-                </ul>
             </div>
 
             <div class="cart_overlay"></div>
