@@ -122,7 +122,7 @@
 
     <ul class="default_btns_group ul_li">
         <li>
-            <button class="btn" style="background: #f02757" type="submit" @if (($permit->size == 'enable' && !$size_id)||($permit->variant == 'enable' && !$variant_id) ||($permit->color == 'enable' && !$color_id)) disabled @endif>Add To Cart</button>
+            <button class="btn add-to-cart" style="background: #f02757" type="submit" @if (($permit->size == 'enable' && !$size_id)||($permit->variant == 'enable' && !$variant_id) ||($permit->color == 'enable' && !$color_id)) disabled @endif>Add To Cart</button>
         </li>
     </ul>
 </form>

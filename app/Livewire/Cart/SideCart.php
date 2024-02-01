@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Livewire;
-
+namespace App\Livewire\Cart;
 use App\Models\Cart;
 use ourcodeworld\NameThatColor\ColorInterpreter as NameThatColor;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
 use Livewire\Component;
-use PhpParser\Node\Expr\Cast\Array_;
 
 class SideCart extends Component
 {
@@ -18,7 +17,7 @@ class SideCart extends Component
     public function orderItems()
     {
         if(Auth::check()){
-            return Cart::where('user_id',auth()->user()->id)->get();
+        return Cart::where('user_id',auth()->user()->id)->get();
         }
         else{
             return [];
@@ -32,7 +31,7 @@ class SideCart extends Component
         $total = 0;
         foreach ($this->orderItems as $key => $value) {
             if($value->getProduct->discount_price){
-               $total = $total + ($value->getProduct->discount_price * $value->quantity);
+                $total = $total + ($value->getProduct->discount_price * $value->quantity);
             }
             else{
                 $total = $total + ($value->getProduct->regular_price * $value->quantity);
@@ -41,9 +40,10 @@ class SideCart extends Component
         return $total;
     }
 
+    #[On('addToCart')]
     public function render()
     {
-        return view('livewire.side-cart')->with([
+        return view('livewire.cart.side-cart')->with([
             'color_name' => new NameThatColor(),
         ]);
     }

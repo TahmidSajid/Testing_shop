@@ -148,10 +148,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <span class="cart_icon">
-                                            <i class="icon icon-ShoppingCart"></i>
-                                            <small class="cart_counter">{{ App\Models\Cart::where('user_id',Auth::id())->get()->count() }}</small>
-                                        </span>
+                                        @livewire('navbar.cart-button')
                                     </li>
                                 </ul>
                             </button>
@@ -281,7 +278,7 @@
         <div class="sidebar-menu-wrapper">
             <div class="cart_sidebar">
                 <button type="button" class="close_btn"><i class="fal fa-times"></i></button>
-                @livewire('side-cart')
+                @livewire('cart.side-cart')
 
 
             </div>

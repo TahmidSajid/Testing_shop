@@ -8,17 +8,27 @@
                 </div>
                 <div class="item_content">
                     <h4 class="item_title">{{ $order_item->getProduct->name }}</h4>
-                    <span class="item_price"> Size:
-                        {{ $order_item->getSize->size }}
-                    </span>
-                    <span class="item_price"> Variant:
-                        {{ $order_item->getVariant->variant }}
-                    </span>
-                    <span class="item_price"> Color:
-                        {{ $color_name->name($order_item->getColor->color_code)['name'] }}
-                    </span>
+                    @if ($order_item->getProduct->size === 'enable')
+                        <span class="item_price"> Size:
+                            {{ $order_item->getSize->size }}
+                        </span>
+                    @else
+                    @endif
+
+                    @if ($order_item->getProduct->variant === 'enable')
+                        <span class="item_price"> Variant:
+                            {{ $order_item->getVariant->variant }}
+                        </span>
+                    @else
+                    @endif
+                    @if ($order_item->getProduct->color === 'enable')
+                        <span class="item_price"> Color:
+                            {{ $color_name->name($order_item->getColor->color_code)['name'] }}
+                        </span>
+                    @else
+                    @endif
                     <span class="item_price"> Quantity:
-                        {{ $order_item->quantity}}
+                        {{ $order_item->quantity }}
                     </span>
                     <span class="item_price"> Price:
                         @if ($order_item->getProduct->discount_price)
@@ -53,7 +63,7 @@
     </ul>
 
     <ul class="btns_group ul_li_block clearfix">
-        <li><a class="btn btn_primary" href="cart.html">View Cart</a></li>
+        <li><a class="btn btn_primary" href="{{ route('cart_view') }}">View Cart</a></li>
         <li><a class="btn btn_secondary" href="checkout.html">Checkout</a></li>
     </ul>
 </div>

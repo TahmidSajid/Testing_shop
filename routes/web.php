@@ -36,6 +36,7 @@ Route::get('/user/dashboard',[App\Http\Controllers\FrontendController::class,'us
 Route::get('/contact/page',[App\Http\Controllers\FrontendController::class,'contact_page'])->name('contact');
 Route::post('/contact/page/form',[App\Http\Controllers\FrontendController::class,'contact_page_form'])->name('contact_form');
 Route::get('/product/view/{id}',[\App\Http\Controllers\FrontendController::class,'product_view'])->name('product_view');
+Route::get('/cart/view',[\App\Http\Controllers\CartController::class,'cart_view'])->name('cart_view');
 
 // dashboard routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

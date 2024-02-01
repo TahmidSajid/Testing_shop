@@ -125,6 +125,7 @@ class Select extends Component
             'quantity' => $this->quantity,
             'created_at' => Carbon::now(),
         ]);
+        $this->dispatch('addToCart');
     }
     public function render()
     {
