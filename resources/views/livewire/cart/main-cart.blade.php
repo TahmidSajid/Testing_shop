@@ -12,12 +12,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($order_lists as $order_list)
+                    @forelse ($this->OrderLists as $order_list)
                         <tr>
                             <td>
                                 <div class="cart_product">
-                                    <img src="{{ asset('uploads/thumbnail') }}/{{ $order_list->getProduct->thumbnail }}" alt="image_not_found">
-                                    <h3><a href="{{ route('product_view',$order_list->getProduct->id) }}">{{ $order_list->getProduct->name }}</a></h3>
+                                    <img src="{{ asset('uploads/thumbnail') }}/{{ $order_list->getProduct->thumbnail }}"
+                                        alt="image_not_found">
+                                    <h3>
+                                        <a href="{{ route('product_view', $order_list->getProduct->id) }}">
+                                            {{ $order_list->getProduct->name }},
+                                            @if ($order_list->getProduct->size === 'enable')
+                                                Size : {{ $order_list->getSize->size }},
+                                            @endif
+                                            @if ($order_list->getProduct->variant === 'enable')
+                                                Variant : {{ $order_list->getVariant->variant }},
+                                            @endif
+                                            @if ($order_list->getProduct->color === 'enable')
+                                                Color : {{ $order_list->getSize->size }},
+                                            @endif
+                                        </a>
+                                    </h3>
                                 </div>
                             </td>
                             <td class="text-center">
@@ -30,13 +44,37 @@
                                 </span>
                             </td>
 
-                                @livewire('cart.main-cart-form',['product_info'=> $order_list->getProduct,'cart_info'=> $order_list])
-
-                            <td class="text-center"><button type="button" class="remove_btn"><i
-                                        class="fal fa-trash-alt"></i></button></td>
+                            <div wire:ignore>
+                                <td class="text-center">
+                                    <div class="quantity_input">
+                                        <button type="button" class="input_number_decrement"
+                                            wire:click="decrementer({{ $order_list->quantity }},{{ $order_list->id }})">
+                                            <i class="fal fa-minus"></i>
+                                        </button>
+                                        <input type="text" value="{{ $order_list->quantity }}">
+                                        <button type="button" class="input_number_increment"
+                                            wire:click="incrementer({{ $order_list->quantity }},{{ $order_list->id }})">
+                                            <i class="fal fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </div>
+                            <td class="text-center">
+                                <span class="price_text">
+                                    @if ($order_list->getProduct->discount_price)
+                                        ৳ {{ $order_list->getProduct->discount_price * $order_list->quantity }}
+                                    @else
+                                        ৳ {{ $order_list->getProduct->regular_price * $order_list->quantity }}
+                                    @endif
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <button type="button" class="remove_btn" wire:click="delete({{ $order_list->id }})">
+                                    <i class="fal fa-trash-alt"></i>
+                                </button>
+                            </td>
                         </tr>
                     @empty
-
                     @endforelse
                 </tbody>
             </table>
@@ -73,11 +111,13 @@
                                 class="far fa-arrow-up"></i></span></h3>
                     <form action="#">
                         <div class="select_option clearfix">
-                            <select>
-                                <option value="">Select Your Option</option>
-                                <option value="1">Inside City</option>
-                                <option value="2">Outside City</option>
-                            </select>
+                            <div wire:ignore>
+                                <select>
+                                    <option value="">Select Your Option</option>
+                                    <option value="1">Inside City</option>
+                                    <option value="2">Outside City</option>
+                                </select>
+                            </div>
                         </div>
                         <br>
                         <button type="submit" class="btn btn_primary rounded-pill">Update Total</button>
