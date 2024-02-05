@@ -5,6 +5,7 @@ namespace App\Livewire\Cart;
 use Livewire\Component;
 use App\Models\Cart;
 use Livewire\Attributes\Computed;
+use ourcodeworld\NameThatColor\ColorInterpreter as NameThatColor;
 use Livewire\Attributes\On;
 
 class MainCart extends Component
@@ -29,6 +30,7 @@ class MainCart extends Component
 
     public function delete($id){
         Cart::where('id',$id)->delete();
+        $this->dispatch('total_price_check');
     }
     public function decrementer($quantity,$id)
     {
@@ -51,6 +53,8 @@ class MainCart extends Component
 
     public function render()
     {
-        return view('livewire.cart.main-cart');
+        return view('livewire.cart.main-cart')->with([
+            'color_name' => new NameThatColor()
+        ]);
     }
 }
