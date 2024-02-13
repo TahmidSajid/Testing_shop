@@ -51,6 +51,8 @@ Route::post('/products',[App\Http\Controllers\ProductController::class, 'product
 Route::get('/variation/select',[App\Http\Controllers\VariationsController::class, 'variation_select'])->name('variation_select');
 Route::get('/variation/product/{id}',[App\Http\Controllers\VariationsController::class, 'variation_select_view'])->name('variation_select_view');
 Route::get('/variations/{id}',[App\Http\Controllers\VariationsController::class, 'variations'])->name('variations');
+Route::get('/cupons',[App\Http\Controllers\CuponsController::class, 'index'])->name('cupons');
+// Route::post('/add/cupons',[App\Http\Controllers\CuponsController::class, 'add_cupons'])->name('add_cupons');
 
 
 // category route package
