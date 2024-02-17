@@ -48,11 +48,14 @@ class SearchUsers extends Component
             ]);
         }
 
+        $this->reset('search','key','cuponName','discount','validity','selectUsers');
+
     }
 
     public function render()
     {
         return view('livewire.user.search-users')->with([
+            'cupons'=> Cupons::distinct()->get(),
             'user' => User::search($this->search)->get(),
         ]);
     }
