@@ -48,18 +48,27 @@
             <span>Subtotal:</span>
             <span>৳ {{ $this->totalPrice }}</span>
         </li>
-        <li>
+        {{-- <li>
             <span>Vat 5%:</span>
             <span>$4.5</span>
-        </li>
-        <li>
-            <span>Discount 20%:</span>
-            <span>- $18.9</span>
-        </li>
-        <li>
-            <span>Total:</span>
-            <span>$75.6</span>
-        </li>
+        </li> --}}
+        @if ($cupon_discount !== null)
+            <li>
+                <span>Discount {{ $cupon_discount }}% by coupon:</span>
+                <span>- ${{ $moneyOff }}</span>
+            </li>
+        @endif
+        @if ($cupon_discount !== null)
+            <li>
+                <span>Total:</span>
+                <span>${{ $price_after_discount }}</span>
+            </li>
+        @else
+            <li>
+                <span>Total:</span>
+                <span> ${{ $totalPrice }}</span>
+            </li>
+        @endif
     </ul>
 
     <ul class="btns_group ul_li_block clearfix">

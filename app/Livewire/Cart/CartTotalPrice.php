@@ -29,6 +29,13 @@ class CartTotalPrice extends Component
 
             $this->total_order_price = $this->total_cart_price;
         }
+
+
+        // ******** for price check if cupon added
+        $cupon_check = Cart::where('user_id',auth()->user()->id)->first()->cupon_id;
+        if($cupon_check !== null){
+            $this->dispatch('after_cupon');
+        }
     }
 
     #[On('total_price_check')]
@@ -46,6 +53,12 @@ class CartTotalPrice extends Component
             }
             $this->total_cart_price = $this->total_cart_price + ($quantity * $price);
             $this->total_order_price = $this->total_cart_price;
+        }
+
+        // ******** for price check if cupon added
+        $cupon_check = Cart::where('user_id',auth()->user()->id)->first()->cupon_id;
+        if($cupon_check !== null){
+            $this->dispatch('after_cupon');
         }
     }
 

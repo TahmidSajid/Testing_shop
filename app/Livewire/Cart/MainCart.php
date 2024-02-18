@@ -20,6 +20,7 @@ class MainCart extends Component
     }
     public function boot()
     {
+        // ******** to clear the order lint in main cart
         unset($this->OrderLists);
     }
 
@@ -30,7 +31,12 @@ class MainCart extends Component
 
     public function delete($id){
         Cart::where('id',$id)->delete();
+
+        // ********* For price checking after a deletion of product
         $this->dispatch('total_price_check');
+
+        // ********* For updating the navbar cart button
+        $this->dispatch('addToCart');
     }
     public function decrementer($quantity,$id)
     {
@@ -39,6 +45,8 @@ class MainCart extends Component
             Cart::where('id',$id)->update([
                 'quantity' => $quantity,
             ]);
+
+            // ********* For price checking after quantity decrement
             $this->dispatch('total_price_check');
         }
     }
@@ -48,7 +56,10 @@ class MainCart extends Component
         Cart::where('id',$id)->update([
             'quantity' => $quantity,
         ]);
+
+        // ********* For price checking after quantity increment
         $this->dispatch('total_price_check');
+
     }
 
     public function render()

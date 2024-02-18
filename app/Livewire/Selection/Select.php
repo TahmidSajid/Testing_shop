@@ -17,34 +17,36 @@ use Livewire\Component;
 class Select extends Component
 
 {
-    public $product_id ;
-    public $size_id ;
-    public $size_name ;
-    public $variant_id ;
-    public $variant_name ;
-    public $color_id ;
-    public $selected_color_name ;
-    public $quantity = 1 ;
-    public $permit ;
-    public $price ;
-    public $total_price = null ;
+    public $product_id;
+    public $size_id;
+    public $size_name;
+    public $variant_id;
+    public $variant_name;
+    public $color_id;
+    public $selected_color_name;
+    public $quantity = 1;
+    public $permit;
+    public $price;
+    public $total_price = null;
 
-    public function mount(){
-        $this->permit = Products::where('id',$this->product_id)->first();
-        if($this->permit->discount_price === null){
+    public function mount()
+    {
+        $this->permit = Products::where('id', $this->product_id)->first();
+        if ($this->permit->discount_price === null) {
             $this->price = $this->permit->regular_price;
-        }
-        else{
+        } else {
             $this->price = $this->permit->discount_price;
         }
     }
 
     #[Computed()]
-    public function sizes(){
-        return Quantites::select('size_id')->where('product_id',$this->product_id)->distinct()->get();
+    public function sizes()
+    {
+        return Quantites::select('size_id')->where('product_id', $this->product_id)->distinct()->get();
     }
 
-    public function getSize($id){
+    public function getSize($id)
+    {
         $this->size_id = $id;
         $this->size_name = Sizes::find($id)->size;
         $this->dispatch('variantCheck');
@@ -52,70 +54,75 @@ class Select extends Component
     }
 
     #[Computed()]
-    public function variants(){
-        if($this->permit->size == 'enable'){
-        return Quantites::select('variation_id')->where('product_id',$this->product_id)->where('size_id',$this->size_id)->distinct()->get();
-        }
-        else{
-            return Quantites::select('variation_id')->where('product_id',$this->product_id)->distinct()->get();
+    public function variants()
+    {
+        if ($this->permit->size == 'enable') {
+            return Quantites::select('variation_id')->where('product_id', $this->product_id)->where('size_id', $this->size_id)->distinct()->get();
+        } else {
+            return Quantites::select('variation_id')->where('product_id', $this->product_id)->distinct()->get();
         }
     }
 
-    public function getVariant($id){
+    public function getVariant($id)
+    {
         $this->variant_id = $id;
         $this->variant_name = Variants::find($id)->variant;
         $this->dispatch('colorCheck');
     }
 
     #[On('variantCheck')]
-    public function resetVariant(){
-        if($this->variant_id){
-            $this->reset('variant_name','variant_id');
+    public function resetVariant()
+    {
+        if ($this->variant_id) {
+            $this->reset('variant_name', 'variant_id');
         }
-        if($this->color_id){
+        if ($this->color_id) {
             $this->dispatch('colorCheck');
         }
     }
 
     #[Computed()]
-    public function colors(){
-        if($this->permit->size == 'enable' && $this->permit->variant == 'enable'){
-            return Quantites::select('color_id')->where('product_id',$this->product_id)->where('size_id',$this->size_id)->where('variation_id',$this->variant_id)->distinct()->get();
-        }
-        elseif($this->permit->variant == 'enable'){
-            return Quantites::select('color_id')->where('product_id',$this->product_id)->where('variation_id',$this->variant_id)->distinct()->get();
-        }
-        else{
-            return Quantites::select('color_id')->where('product_id',$this->product_id)->distinct()->get();
+    public function colors()
+    {
+        if ($this->permit->size == 'enable' && $this->permit->variant == 'enable') {
+            return Quantites::select('color_id')->where('product_id', $this->product_id)->where('size_id', $this->size_id)->where('variation_id', $this->variant_id)->distinct()->get();
+        } elseif ($this->permit->variant == 'enable') {
+            return Quantites::select('color_id')->where('product_id', $this->product_id)->where('variation_id', $this->variant_id)->distinct()->get();
+        } else {
+            return Quantites::select('color_id')->where('product_id', $this->product_id)->distinct()->get();
         }
     }
 
-    public function getColor($id){
+    public function getColor($id)
+    {
         $this->color_id = $id;
         $this->selected_color_name = new NameThatColor();
         $this->selected_color_name = $this->selected_color_name->name(Colors::find($id)->color_code)['name'];
     }
 
     #[On('colorCheck')]
-    public function resetColor(){
-        if($this->color_id){
-            $this->reset('color_id','selected_color_name');
+    public function resetColor()
+    {
+        if ($this->color_id) {
+            $this->reset('color_id', 'selected_color_name');
         }
     }
 
-    public function incrementing(){
-        $this->quantity = $this->quantity +1 ;
+    public function incrementing()
+    {
+        $this->quantity = $this->quantity + 1;
         $this->total_price = $this->quantity * $this->price;
     }
-    public function decrementing(){
+    public function decrementing()
+    {
 
-        if($this->quantity >1){
-            $this->quantity = $this->quantity -1 ;
+        if ($this->quantity > 1) {
+            $this->quantity = $this->quantity - 1;
             $this->total_price = $this->total_price - $this->price;
         }
-
     }
-    public function save($user_id){
+    public function save($user_id)
+    {
         Cart::insert([
             'user_id' => $user_id,
             'product_id' => $this->product_id,
@@ -125,6 +132,17 @@ class Select extends Component
             'quantity' => $this->quantity,
             'created_at' => Carbon::now(),
         ]);
+
+        // ******************** if cupon exist it will added to all
+        $cupon_id = Cart::where('user_id', auth()->user()->id)->first()->cupon_id;
+        if ($cupon_id !== null) {
+                // dd($cupon_id);
+                Cart::where('user_id', auth()->user()->id)->update([
+                    'cupon_id' => $cupon_id,
+                ]);
+            }
+
+        // ******************** for updating the navbar cart button
         $this->dispatch('addToCart');
     }
     public function render()
