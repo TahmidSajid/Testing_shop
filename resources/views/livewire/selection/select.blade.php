@@ -1,6 +1,6 @@
 <div>
     <div class="item_attribute">
-        <form wire:submit="save({{ auth()->user()->id }})" method="POST">
+        <form wire:submit="save" method="POST">
             @csrf
             <div class="row d-flex justify-content-between">
                 @if ($permit->size == 'enable')

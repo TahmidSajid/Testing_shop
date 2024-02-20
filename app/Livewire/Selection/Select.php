@@ -9,6 +9,7 @@ use App\Models\Sizes;
 use App\Models\Variants;
 use App\Models\Cart;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Computed;
 use ourcodeworld\NameThatColor\ColorInterpreter as NameThatColor;
 use Livewire\Attributes\On;
@@ -121,29 +122,36 @@ class Select extends Component
             $this->total_price = $this->total_price - $this->price;
         }
     }
-    public function save($user_id)
+    public function save()
     {
-        Cart::insert([
-            'user_id' => $user_id,
-            'product_id' => $this->product_id,
-            'size_id' => $this->size_id,
-            'variant_id' => $this->variant_id,
-            'color_id' => $this->color_id,
-            'quantity' => $this->quantity,
-            'created_at' => Carbon::now(),
-        ]);
 
-        // ******************** if cupon exist it will added to all
-        $cupon_id = Cart::where('user_id', auth()->user()->id)->first()->cupon_id;
-        if ($cupon_id !== null) {
-                // dd($cupon_id);
-                Cart::where('user_id', auth()->user()->id)->update([
-                    'cupon_id' => $cupon_id,
-                ]);
-            }
+        if(Auth::check()){
+            Cart::insert([
+                'user_id' => auth()->user()->id,
+                'product_id' => $this->product_id,
+                'size_id' => $this->size_id,
+                'variant_id' => $this->variant_id,
+                'color_id' => $this->color_id,
+                'quantity' => $this->quantity,
+                'created_at' => Carbon::now(),
+            ]);
 
-        // ******************** for updating the navbar cart button
-        $this->dispatch('addToCart');
+            // ******************** if cupon exist it will added to all
+            $cupon_id = Cart::where('user_id', auth()->user()->id)->first()->cupon_id;
+            if ($cupon_id !== null) {
+                    // dd($cupon_id);
+                    Cart::where('user_id', auth()->user()->id)->update([
+                        'cupon_id' => $cupon_id,
+                    ]);
+                }
+
+            // ******************** for updating the navbar cart button
+            $this->dispatch('addToCart');
+        }
+        else{
+            return redirect(route('user_register'))->with('OrderLogin','Need to login first');
+        }
+
     }
     public function render()
     {

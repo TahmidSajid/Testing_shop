@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire\Cart;
+
 use App\Models\Cart;
 use App\Models\Cupons;
 use ourcodeworld\NameThatColor\ColorInterpreter as NameThatColor;
@@ -15,21 +16,28 @@ class SideCart extends Component
 
     public $cupon_discount = null;
 
-    public $moneyOff ;
+    public $moneyOff;
 
-    public $price_after_discount ;
+    public $price_after_discount;
 
+    public $order_check;
+
+
+    public function boot()
+    {
+        if(Auth::check()){
+            $this->order_check = Cart::where('user_id', auth()->user()->id)->first();
+        }
+    }
 
     #[Computed]
     public function orderItems()
     {
-        if(Auth::check()){
-        return Cart::where('user_id',auth()->user()->id)->get();
-        }
-        else{
+        if (Auth::check()) {
+            return Cart::where('user_id', auth()->user()->id)->get();
+        } else {
             return [];
         }
-
     }
 
     #[Computed]
@@ -37,10 +45,9 @@ class SideCart extends Component
     {
         $total = 0;
         foreach ($this->orderItems as $key => $value) {
-            if($value->getProduct->discount_price){
+            if ($value->getProduct->discount_price) {
                 $total = $total + ($value->getProduct->discount_price * $value->quantity);
-            }
-            else{
+            } else {
                 $total = $total + ($value->getProduct->regular_price * $value->quantity);
             }
         }
@@ -50,11 +57,18 @@ class SideCart extends Component
     #[On('addToCart')]
     public function render()
     {
-        $cupon_id = Cart::where('user_id', auth()->user()->id)->first()->cupon_id;
-        if($cupon_id !== null){
-            $this->cupon_discount = Cupons::where('id',$cupon_id)->where('user_id',auth()->user()->id)->first()->cupon_discount;
-            $this->price_after_discount = $this->totalPrice * ($this->cupon_discount/100);
-            $this->moneyOff = $this->totalPrice - $this->price_after_discount;
+        if (Auth::check()) {
+
+            if ($this->order_check !== null) {
+                $cupon_id = Cart::where('user_id', auth()->user()->id)->first()->cupon_id;
+            } else {
+                $cupon_id = null;
+            }
+            if ($cupon_id !== null) {
+                $this->cupon_discount = Cupons::where('id', $cupon_id)->where('user_id', auth()->user()->id)->first()->cupon_discount;
+                $this->price_after_discount = $this->totalPrice * ($this->cupon_discount / 100);
+                $this->moneyOff = $this->totalPrice - $this->price_after_discount;
+            }
         }
         return view('livewire.cart.side-cart')->with([
             'color_name' => new NameThatColor(),
