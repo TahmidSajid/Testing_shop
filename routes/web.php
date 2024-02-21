@@ -32,11 +32,13 @@ Route::post('/user/account/register',[App\Http\Controllers\UserRegisterControlle
 Route::post('/user/account/verify',[App\Http\Controllers\UserRegisterController::class,'user_account_verify'])->name('user_account_verify');
 Route::get('/user/otp/verify',[App\Http\Controllers\FrontendController::class,'user_otp_verify'])->name('user_otp_verify');
 Route::post('/user/login',[App\Http\Controllers\UserRegisterController::class,'user_login'])->name('user_login');
-Route::get('/user/dashboard',[App\Http\Controllers\FrontendController::class,'user_dashboard'])->name('user_dashboard');
+Route::get('/user/dashboard',[App\Http\Controllers\UserDashboardController::class,'user_dashboard'])->name('user_dashboard');
 Route::get('/contact/page',[App\Http\Controllers\FrontendController::class,'contact_page'])->name('contact');
 Route::post('/contact/page/form',[App\Http\Controllers\FrontendController::class,'contact_page_form'])->name('contact_form');
 Route::get('/product/view/{id}',[\App\Http\Controllers\FrontendController::class,'product_view'])->name('product_view');
 Route::get('/cart/view',[\App\Http\Controllers\CartController::class,'cart_view'])->name('cart_view');
+Route::post('user/account/details/update',[\App\Http\Controllers\UserDashboardController::class,"update_details"])->name('update_details');
+Route::post('user/account/details/update/verify',[\App\Http\Controllers\UserDashboardController::class,"update_verify"])->name('update_verify');
 
 // dashboard routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

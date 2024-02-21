@@ -49,9 +49,6 @@ class FrontendController extends Controller
     public function user_otp_verify(){
         return view('frontend.user_otp_verify');
     }
-    public function user_dashboard(){
-        return view ('frontend.user-dashboard');
-    }
     public function contact_page(){
         return view ('frontend.contact_us');
     }
