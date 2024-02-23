@@ -39,6 +39,9 @@ Route::get('/product/view/{id}',[\App\Http\Controllers\FrontendController::class
 Route::get('/cart/view',[\App\Http\Controllers\CartController::class,'cart_view'])->name('cart_view');
 Route::post('user/account/details/update',[\App\Http\Controllers\UserDashboardController::class,"update_details"])->name('update_details');
 Route::post('user/account/details/update/verify',[\App\Http\Controllers\UserDashboardController::class,"update_verify"])->name('update_verify');
+Route::post('user/account/password/change',[\App\Http\Controllers\UserDashboardController::class,"password_change"])->name('password_change');
+Route::post('user/account/address',[\App\Http\Controllers\UserDashboardController::class,"address_update"])->name('address_update');
+Route::post('add\review\{product_id}',[\App\Http\Controllers\FrontendController::class,"add_review"])->name('add_review');
 
 // dashboard routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

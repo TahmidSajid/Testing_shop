@@ -6,6 +6,7 @@ use App\Mail\VerificationMail;
 use App\Models\User;
 use App\Models\verifications;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class UserDashboardController extends Controller
@@ -16,6 +17,7 @@ class UserDashboardController extends Controller
             'email' => 'required',
             'phone_number' => 'required',
         ]);
+
         $otp = rand(1000,4000);
 
         verifications::insert([
@@ -55,6 +57,40 @@ class UserDashboardController extends Controller
 
             return back()->with('invalid_otp','OTP invalide');
         }
+    }
+
+    public function password_change(Request $request){
+        $request->validate([
+            'old_password' => 'required',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+        ]);
+
+        $old_password =  $request->old_password;
+        $new_password =  $request->password;
+
+        if(Hash::check($old_password,auth()->user()->password)){
+            User::where('id',auth()->user()->id)->update([
+                'password' => Hash::make($new_password),
+            ]);
+            return back()->with('password_changed','Password updated');
+        }
+        else{
+            return back()->with('updating_failed','Wrong password given');
+        }
+
+    }
+
+    public function address_update(Request $request){
+        $request->validate([
+            'address' => 'required',
+        ]);
+
+        User::where('id',auth()->user()->id)->update([
+            'address' => $request->address,
+        ]);
+
+        return back()->with('address_update','Address has been updated');
     }
 
     public function user_dashboard(){

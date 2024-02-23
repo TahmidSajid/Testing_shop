@@ -41,6 +41,10 @@
 
     <!-- custom - css include -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend-assets') }}/css/style.css">
+
+    <!-- review - css include -->
+    @stack('reviewCss')
+
 </head>
 
 <body>
@@ -423,10 +427,17 @@
     <!-- custom - main-js -->
     <script src="{{ asset('frontend-assets') }}/js/main.js"></script>
     <script src="{{ asset('frontend-assets') }}/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Captcha - -js -->
     {!! NoCaptcha::renderJs() !!}
 
+    <!-- Sweet Alert Js -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @yield('alert')
+
+    <!-- Review Js -->
+    @stack('reviewJs')
+
 </body>
 
 </html>
