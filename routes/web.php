@@ -26,22 +26,22 @@ Auth::routes();
 
 // frontend routes
 Route::get('/',[App\Http\Controllers\FrontendController::class,'index'])->name('index');
-Route::get('/about',[App\Http\Controllers\FrontendController::class,'about'])->name('about');
+Route::get('/about',[App\Http\Controllers\AboutPageController::class,'about'])->name('about');
 Route::get('/user/register',[App\Http\Controllers\UserRegisterController::class,'user_register'])->name('user_register');
 Route::post('/user/account/register',[App\Http\Controllers\UserRegisterController::class,'user_account_register'])->name('user_account_register');
 Route::post('/user/account/verify',[App\Http\Controllers\UserRegisterController::class,'user_account_verify'])->name('user_account_verify');
 Route::get('/user/otp/verify',[App\Http\Controllers\FrontendController::class,'user_otp_verify'])->name('user_otp_verify');
 Route::post('/user/login',[App\Http\Controllers\UserRegisterController::class,'user_login'])->name('user_login');
 Route::get('/user/dashboard',[App\Http\Controllers\UserDashboardController::class,'user_dashboard'])->name('user_dashboard');
-Route::get('/contact/page',[App\Http\Controllers\FrontendController::class,'contact_page'])->name('contact');
-Route::post('/contact/page/form',[App\Http\Controllers\FrontendController::class,'contact_page_form'])->name('contact_form');
-Route::get('/product/view/{id}',[\App\Http\Controllers\FrontendController::class,'product_view'])->name('product_view');
+Route::get('/contact/page',[App\Http\Controllers\ContactPageController::class,'contact_page'])->name('contact');
+Route::post('/contact/page/form',[App\Http\Controllers\ContactPageController::class,'contact_page_form'])->name('contact_form');
+Route::get('/product/view/{id}',[\App\Http\Controllers\ProductDetailsPageController::class,'product_view'])->name('product_view');
 Route::get('/cart/view',[\App\Http\Controllers\CartController::class,'cart_view'])->name('cart_view');
 Route::post('user/account/details/update',[\App\Http\Controllers\UserDashboardController::class,"update_details"])->name('update_details');
 Route::post('user/account/details/update/verify',[\App\Http\Controllers\UserDashboardController::class,"update_verify"])->name('update_verify');
 Route::post('user/account/password/change',[\App\Http\Controllers\UserDashboardController::class,"password_change"])->name('password_change');
 Route::post('user/account/address',[\App\Http\Controllers\UserDashboardController::class,"address_update"])->name('address_update');
-Route::post('add\review\{product_id}',[\App\Http\Controllers\FrontendController::class,"add_review"])->name('add_review');
+Route::post('add/review/{product_id}',[\App\Http\Controllers\ProductDetailsPageController::class,"add_review"])->name('add_review');
 
 // dashboard routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -57,6 +57,8 @@ Route::get('/variation/select',[App\Http\Controllers\VariationsController::class
 Route::get('/variation/product/{id}',[App\Http\Controllers\VariationsController::class, 'variation_select_view'])->name('variation_select_view');
 Route::get('/variations/{id}',[App\Http\Controllers\VariationsController::class, 'variations'])->name('variations');
 Route::get('/cupons',[App\Http\Controllers\CuponsController::class, 'index'])->name('cupons');
+Route::get('/about/us/',[App\Http\Controllers\AboutUsController::class, 'about_us_view'])->name('about_us_view');
+Route::post('/add/company/history',[App\Http\Controllers\AboutUsController::class, 'add_history'])->name('add_history');
 // Route::post('/add/cupons',[App\Http\Controllers\CuponsController::class, 'add_cupons'])->name('add_cupons');
 
 

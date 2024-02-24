@@ -1015,6 +1015,11 @@
                             <span class="nav-text">Cupons</span>
                         </a>
                     </li>
+                    <li><a class="has-arrow ai-icon" href="{{ route('about_us_view') }}" aria-expanded="false">
+                            <i class="fa-solid fa-list-check"></i>
+                            <span class="nav-text">About Us</span>
+                        </a>
+                    </li>
                 </ul>
                 <div class="add-menu-sidebar">
                     <img src="images/calendar.png" alt="" class="mr-3">

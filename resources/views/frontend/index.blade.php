@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('content')
     <!-- slider_section - start
-                                                ================================================== -->
+                ================================================== -->
     <section class="slider_section">
         <div class="container">
             <div class="row">
@@ -57,10 +57,10 @@
         </div>
     </section>
     <!-- slider_section - end
-                                                ================================================== -->
+                ================================================== -->
 
     <!-- policy_section - start
-                                                ================================================== -->
+                ================================================== -->
     <section class="policy_section">
         <div class="container">
             <div class="row">
@@ -121,11 +121,11 @@
 
     </section>
     <!-- policy_section - end
-                                                ================================================== -->
+                ================================================== -->
 
 
     <!-- products-with-sidebar-section - start
-                                                ================================================== -->
+                ================================================== -->
     <section class="products-with-sidebar-section">
         <div class="container">
             <div class="row">
@@ -139,7 +139,7 @@
                         <div class="product-area clearfix">
 
                             <!-- Best Selling products start
-                                                ================================================== -->
+                ================================================== -->
                             @foreach ($products as $product)
                                 <div class="grid">
                                     <div class="product-pic">
@@ -156,21 +156,20 @@
                                         </h4>
                                         <p><a href="{{ route('product_view', $product->id) }}">{{ Str::limit($product->short_description, 20) }}
                                             </a></p>
-                                        <?php
-                                        $total_rating = 0;
-                                        $total_review;
-                                        $avg_rating;
-                                        foreach ($product->productReview as $key => $review) {
-                                            $total_rating = $total_rating + $review->rating;
-                                            $total_review = $key + 1;
-                                        }
-                                        if ($total_rating === 0) {
-                                            $avg_rating = 0;
-                                        }
-                                        else{
-                                            $avg_rating = $total_rating / $total_review;
-                                        }
-                                        ?>
+                                        @php
+                                            $total_rating = 0;
+                                            $total_review;
+                                            $avg_rating;
+                                            foreach ($product->productReview as $key => $review) {
+                                                $total_rating = $total_rating + $review->rating;
+                                                $total_review = $key + 1;
+                                            }
+                                            if ($total_rating === 0) {
+                                                $avg_rating = 0;
+                                            } else {
+                                                $avg_rating = $total_rating / $total_review;
+                                            }
+                                        @endphp
                                         @if ($avg_rating === 0)
                                             <div class="rating">
                                                 <p>not rated yet</p>
@@ -214,7 +213,7 @@
                                 </div>
                             @endforeach
                             <!-- Best selling products end
-                                                ================================================== -->
+                ================================================== -->
 
 
                         </div>
@@ -263,7 +262,7 @@
                             <div class="vertical_slider_4item" data-slick='{"dots": false}'>
 
                                 <!-- Leatest products slider start
-                                                    ================================================== -->
+                    ================================================== -->
                                 @forelse ($leatest as $leatest_product)
                                     <div class="slider_item">
                                         <div class="small_product_layout">
@@ -278,19 +277,22 @@
                                                         href="{{ route('product_view', $leatest_product->id) }}">{{ $leatest_product->name }}</a>
                                                 </h3>
                                                 <!-- php raw code for avg rating Start
-                                                                ================================================== -->
-                                                <?php
-                                                $total_rating_leatest = 0;
-                                                $total_review_leatest;
-                                                foreach ($leatest_product->productReview as $key => $review_leatest) {
-                                                    $total_rating_leatest = $total_rating_leatest + $review_leatest->rating;
-                                                    $total_review_leatest = $key + 1;
-                                                }
-                                                $avg_rating_leatest = $total_rating_leatest / $total_review_leatest;
-                                                ?>
-
+                                ================================================== -->
+                                                @php
+                                                    $total_rating_leatest = 0;
+                                                    $total_review_leatest;
+                                                    foreach ($leatest_product->productReview as $key => $review_leatest) {
+                                                        $total_rating_leatest = $total_rating_leatest + $review_leatest->rating;
+                                                        $total_review_leatest = $key + 1;
+                                                    }
+                                                    if ($total_rating_leatest === 0) {
+                                                        $avg_rating_leatest = 0;
+                                                    } else {
+                                                        $avg_rating_leatest = $total_rating_leatest / $total_review_leatest;
+                                                    }
+                                                @endphp
                                                 <!-- php raw code for avg rating Start
-                                                            ================================================== -->
+                            ================================================== -->
                                                 @if ($avg_rating_leatest === 0)
                                                     <ul class="rating_star ul_li">
                                                         <li>
@@ -320,7 +322,7 @@
                                 @empty
                                 @endforelse
                                 <!-- Leatest products slider end
-                                                    ================================================== -->
+                    ================================================== -->
 
                             </div>
                         </div>
@@ -353,11 +355,11 @@
         </div> <!-- end container  -->
     </section>
     <!-- products-with-sidebar-section - end
-                                                ================================================== -->
+                ================================================== -->
 
 
     <!-- promotion_section - start
-                                                ================================================== -->
+                ================================================== -->
     <section class="promotion_section">
         <div class="container">
             <div class="row promotion_banner_wrap">
@@ -392,10 +394,10 @@
         </div>
     </section>
     <!-- promotion_section - end
-                                                ================================================== -->
+                ================================================== -->
 
     <!-- new_arrivals_section - start
-                                                ================================================== -->
+                ================================================== -->
     <section class="new_arrivals_section section_space">
         <div class="container">
             <div class="sec-title-link">
@@ -532,10 +534,10 @@
         </div>
     </section>
     <!-- new_arrivals_section - end
-                                                ================================================== -->
+                ================================================== -->
 
     <!-- brand_section - start
-                                                ================================================== -->
+                ================================================== -->
     <section class="brand_section pb-0">
         <div class="container">
             <div class="brand_carousel">
@@ -573,10 +575,10 @@
         </div>
     </section>
     <!-- brand_section - end
-                                                ================================================== -->
+                ================================================== -->
 
     <!-- viewed_products_section - start
-                                                ================================================== -->
+                ================================================== -->
     <section class="viewed_products_section section_space">
         <div class="container">
 
@@ -810,10 +812,10 @@
         </div>
     </section>
     <!-- viewed_products_section - end
-                                                ================================================== -->
+                ================================================== -->
 
     <!-- newsletter_section - start
-                                                ================================================== -->
+                ================================================== -->
     <section class="newsletter_section">
         <div class="container">
             <div class="row align-items-center">
@@ -833,5 +835,5 @@
         </div>
     </section>
     <!-- newsletter_section - end
-                                                ================================================== -->
+                ================================================== -->
 @endsection

@@ -416,6 +416,7 @@
     <script src="{{ asset('frontend-assets') }}/js/jquery.min.js"></script>
     <script src="{{ asset('frontend-assets') }}/js/popper.min.js"></script>
     <script src="{{ asset('frontend-assets') }}/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
 
     <!-- carousel - jquery plugins collection -->
     <script src="{{ asset('frontend-assets') }}/js/jquery-plugins-collection.js"></script>
