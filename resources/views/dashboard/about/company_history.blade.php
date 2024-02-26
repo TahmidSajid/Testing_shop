@@ -19,7 +19,7 @@
                             <label>History Paragraph</label>
                             <div class="form-group">
                                 <textarea class="form-control" rows="10" style="resize: none;" name="history_paragraph"
-                                    placeholder="Enter History Heading">@if ($company_history) {{ $company_history->history_paragraph }} @endif</textarea>
+                                    placeholder="Enter History Heading">@if ($company_history){{ $company_history->history_paragraph }}@endif</textarea>
                             </div>
                             @if ($company_history)
                                 <div class="form-group">
@@ -56,4 +56,5 @@
                 @endif
             </div>
         </div>
-    @endsection
+    </div>
+@endsection

@@ -3,8 +3,10 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerListController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VariationsController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,7 +59,7 @@ Route::get('/variation/select',[App\Http\Controllers\VariationsController::class
 Route::get('/variation/product/{id}',[App\Http\Controllers\VariationsController::class, 'variation_select_view'])->name('variation_select_view');
 Route::get('/variations/{id}',[App\Http\Controllers\VariationsController::class, 'variations'])->name('variations');
 Route::get('/cupons',[App\Http\Controllers\CuponsController::class, 'index'])->name('cupons');
-Route::get('/about/us/',[App\Http\Controllers\AboutUsController::class, 'about_us_view'])->name('about_us_view');
+Route::get('/about/us/',[App\Http\Controllers\AboutUsController::class, 'company_history_view'])->name('company_history_view');
 Route::post('/add/company/history',[App\Http\Controllers\AboutUsController::class, 'add_history'])->name('add_history');
 // Route::post('/add/cupons',[App\Http\Controllers\CuponsController::class, 'add_cupons'])->name('add_cupons');
 
@@ -67,4 +69,5 @@ Route::resource('category', CategoryController::class);
 Route::resource('admins', UserController::class);
 Route::resource('customers', CustomerListController::class);
 Route::resource('products', ProductsController::class);
+Route::resource('services', ServicesController::class);
 // Route::resource('variation', VariationsController::class);

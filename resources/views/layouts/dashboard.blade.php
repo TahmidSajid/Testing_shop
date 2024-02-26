@@ -20,8 +20,11 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Date Js -->
+    <!-- Date Css -->
     @stack('dateCss')
+
+    <!-- SelectIcons Css -->
+    @stack('selectIconCss')
 
 </head>
 
@@ -1010,15 +1013,19 @@
                             <span class="nav-text">Variations</span>
                         </a>
                     </li>
-                    <li><a class="has-arrow ai-icon" href="{{ route('cupons') }}" aria-expanded="false">
+                    <li><a class="has-arrow ai-icon" href="{{ route('cupons') }}" aria-expande+d="false">
                             <i class="fa-solid fa-list-check"></i>
                             <span class="nav-text">Cupons</span>
                         </a>
                     </li>
-                    <li><a class="has-arrow ai-icon" href="{{ route('about_us_view') }}" aria-expanded="false">
-                            <i class="fa-solid fa-list-check"></i>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                            <i class="fa-solid fa-tags"></i>
                             <span class="nav-text">About Us</span>
                         </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('company_history_view') }}">Company History</a></li>
+                            <li><a href="{{ route('services.index') }}">Services</a></li>
+                        </ul>
                     </li>
                 </ul>
                 <div class="add-menu-sidebar">
@@ -1098,6 +1105,17 @@
     <!-- Date Js -->
 
     @stack('dateJs')
+
+    <!-- Font Awesome Js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    @stack('selectIconJs')
+
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @yield('alert')
 
     <script>
         function carouselReview() {
