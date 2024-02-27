@@ -39,6 +39,8 @@ Route::get('/contact/page',[App\Http\Controllers\ContactPageController::class,'c
 Route::post('/contact/page/form',[App\Http\Controllers\ContactPageController::class,'contact_page_form'])->name('contact_form');
 Route::get('/product/view/{id}',[\App\Http\Controllers\ProductDetailsPageController::class,'product_view'])->name('product_view');
 Route::get('/cart/view',[\App\Http\Controllers\CartController::class,'cart_view'])->name('cart_view');
+Route::get('user/verify/page',[\App\Http\Controllers\UserDashboardController::class,"verify_page"])->name('verify_page');
+Route::post('user/verify/',[\App\Http\Controllers\UserDashboardController::class,"verify_user"])->name('verify_user');
 Route::post('user/account/details/update',[\App\Http\Controllers\UserDashboardController::class,"update_details"])->name('update_details');
 Route::post('user/account/details/update/verify',[\App\Http\Controllers\UserDashboardController::class,"update_verify"])->name('update_verify');
 Route::post('user/account/password/change',[\App\Http\Controllers\UserDashboardController::class,"password_change"])->name('password_change');

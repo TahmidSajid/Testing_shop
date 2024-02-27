@@ -18,17 +18,17 @@ class FrontendController extends Controller
     public function index(){
 
         if(Auth::check()){
-            if(auth()->user()->status == "unverified"){
-                return redirect()->route('user_otp_verify');
-            }
-            else{
+            // if(auth()->user()->status == "unverified"){
+            //     return redirect()->route('user_otp_verify');
+            // }
+            // else{
                 return view('frontend.index')->with([
                     'categories' => categories::all(),
                     'products' => Products::latest()->get(),
                     'banners' => Products::latest()->take(3)->get(),
                     'leatest' => Products::latest()->take(4)->get(),
                 ]);;
-            }
+            // }
         }
         else{
             return view('frontend.index')->with([

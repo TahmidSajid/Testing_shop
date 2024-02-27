@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('content')
     <!-- breadcrumb_section - start
-    ================================================== -->
+                ================================================== -->
     <div class="breadcrumb_section">
         <div class="container">
             <ul class="breadcrumb_nav ul_li">
@@ -11,11 +11,11 @@
         </div>
     </div>
     <!-- breadcrumb_section - end
-    ================================================== -->
+                ================================================== -->
 
 
     <!-- about_section - start
-    ================================================== -->
+                ================================================== -->
     <section class="about_section section_space">
         <div class="container">
             <div class="row align-items-center">
@@ -31,15 +31,20 @@
                         <p>{{ $history->history_paragraph }}</p>
                         <ul class="counter_wrap ul_li">
                             <li>
-                                <span class="counter">12</span>
+                                <span class="counter_count">12</span>
                                 <small>Years Experience</small>
                             </li>
                             <li>
-                                <span><strong class="counter">10</strong>K</span>
-                                <small>Happy Customers</small>
+                                @if ($total_happy_customers >= 1000)
+                                    <span><strong class="counter_count">{{ $total_happy_customers / 1000 }}</strong>K</span>
+                                    <small>Happy Customers</small>
+                                @else
+                                    <span><strong class="counter_count">{{ $total_happy_customers}}</strong></span>
+                                    <small>Happy Customers</small>
+                                @endif
                             </li>
                             <li>
-                                <span><strong class="counter">100</strong>%</span>
+                                <span><strong class="counter_count">{{ $satisfaction_percentage }}</strong>%</span>
                                 <small>Clients Satisfaction</small>
                             </li>
                         </ul>
@@ -49,11 +54,11 @@
         </div>
     </section>
     <!-- about_section - end
-    ================================================== -->
+                ================================================== -->
 
 
     <!-- service_section - start
-    ================================================== -->
+                ================================================== -->
     <section class="service_section bg_gray section_space">
         <div class="container">
             <div class="row justify-content-center">
@@ -74,11 +79,11 @@
         </div>
     </section>
     <!-- service_section - end
-    ================================================== -->
+                ================================================== -->
 
 
     <!-- team_section - start
-    ================================================== -->
+                ================================================== -->
     <section class="team_section section_space">
         <div class="container">
 
@@ -145,11 +150,11 @@
         </div>
     </section>
     <!-- team_section - end
-    ================================================== -->
+                ================================================== -->
 
 
     <!-- newsletter_section - start
-    ================================================== -->
+                ================================================== -->
     <section class="newsletter_section">
         <div class="container">
             <div class="row align-items-center">
@@ -169,5 +174,16 @@
         </div>
     </section>
     <!-- newsletter_section - end
-    ================================================== -->
+                ================================================== -->
 @endsection
+
+
+@push('counterJs')
+    <script src="{{ asset('frontend-assets/js/counterup.js') }}"></script>
+    <script>
+        $('.counter_count').counterUp({
+            delay: 10,
+            time: 2000
+        });
+    </script>
+@endpush

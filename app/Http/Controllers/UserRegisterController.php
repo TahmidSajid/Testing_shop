@@ -69,35 +69,35 @@ class UserRegisterController extends Controller
             }
         }
     }
-    public function user_account_verify(Request $request){
-        $request->validate([
-            'OTP'=>'required'
-        ]);
-        $otp_no = $request->OTP;
-        if(Verifications::where('user_id',auth()->user()->id)->first()->OTP==$otp_no){
-            User::find(auth()->id())->update([
-                'status'=> 'verified',
-            ]);
-            Auth::logout();
-            // echo auth()->user()->id;
-            return redirect()->route('user_register')->with('account_created','Your account have been created successfully. Enter your email and password');
-        }
-        else{
-            return back();
-        }
-    }
+    // public function user_account_verify(Request $request){
+    //     $request->validate([
+    //         'OTP'=>'required'
+    //     ]);
+    //     $otp_no = $request->OTP;
+    //     if(Verifications::where('user_id',auth()->user()->id)->first()->OTP==$otp_no){
+    //         User::find(auth()->id())->update([
+    //             'status'=> 'verified',
+    //         ]);
+    //         Auth::logout();
+    //         // echo auth()->user()->id;
+    //         return redirect()->route('user_register')->with('account_created','Your account have been created successfully. Enter your email and password');
+    //     }
+    //     else{
+    //         return back();
+    //     }
+    // }
     public function user_login(Request $request){
         $request->validate([
             'email'=> 'required',
             'password'=>'required',
         ]);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password,])) {
-            if(auth()->user()->status == "unverified"){
-                return redirect()->route('user_otp_verify');
-            }
-            else{
+            // if(auth()->user()->status == "unverified"){
+            //     return redirect()->route('user_otp_verify');
+            // }
+            // else{
                 return redirect()->route('index');
-            }
+            // }
         }
         else{
             return "login failed";

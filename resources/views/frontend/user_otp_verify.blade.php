@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <form action="{{ route('user_account_verify') }}" method="POST">
+                    <form action="{{ route('verify_user') }}" method="POST">
                         @csrf
                         <div class="form_item_wrap">
                             <h3 class="input_title">OTP verify*</h3>

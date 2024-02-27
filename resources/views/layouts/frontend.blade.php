@@ -230,7 +230,6 @@
                                                 </a>
                                             </li>
                                         @endauth
-                                        {{-- <li><a class="nav-link" href="{{ route('logout') }}">LogOut</a></li> --}}
                                     </ul>
                                 </div>
                             </nav>
@@ -239,11 +238,6 @@
 
                         <div class="col col-md-3">
                             <ul class="header_icons_group ul_li_right">
-                                {{-- @if ($customer_id)
-                                <li>
-                                    <a>{{auth()->user()->name}}</a>
-                                </li>
-                                @else --}}
                                 @auth
                                     <li>
                                         <a>{{ auth()->user()->name }}</a>
@@ -254,7 +248,6 @@
                                         <a href="{{ route('user_register') }}">Log-in/Register</a>
                                     </li>
                                 @endguest
-                                {{-- @endif --}}
                                 @auth
                                     <li>
                                         <a href="{{ route('user_dashboard') }}">
@@ -416,7 +409,8 @@
     <script src="{{ asset('frontend-assets') }}/js/jquery.min.js"></script>
     <script src="{{ asset('frontend-assets') }}/js/popper.min.js"></script>
     <script src="{{ asset('frontend-assets') }}/js/bootstrap.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js" integrity="sha512-fHXRw0CXruAoINU11+hgqYvY/PcsOWzmj0QmcSOtjlJcqITbPyypc8cYpidjPurWpCnlB8VKfRwx6PIpASCUkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
     <!-- carousel - jquery plugins collection -->
     <script src="{{ asset('frontend-assets') }}/js/jquery-plugins-collection.js"></script>
@@ -438,6 +432,9 @@
 
     <!-- Review Js -->
     @stack('reviewJs')
+
+    <!-- Counter Js -->
+    @stack('counterJs')
 
 </body>
 

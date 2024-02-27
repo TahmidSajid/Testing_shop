@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OtpMail;
 use App\Mail\VerificationMail;
 use App\Models\User;
 use App\Models\verifications;
@@ -11,6 +12,40 @@ use Illuminate\Support\Facades\Mail;
 
 class UserDashboardController extends Controller
 {
+    public function verify_page()
+    {
+        $otp = rand(1000,4000);
+
+        verifications::insert([
+            'number' => "01799863305",
+            'user_id' => auth()->user()->id,
+            'OTP' => $otp,
+        ]);
+
+        Mail::to(auth()->user()->email)->send(new OtpMail($otp));
+
+        return view('frontend.user_otp_verify')->with('OTP_sent','OTP sent to your email');
+    }
+    public function verify_user(Request $request){
+
+        $user_otp = $request->OTP;
+        $data_base_otp = verifications::where('user_id',auth()->user()->id)->first();
+
+        if($data_base_otp->OTP == $user_otp){
+            User::where('id',auth()->user()->id)->update([
+                'status' => 'verified',
+            ]);
+            verifications::where('user_id',auth()->user()->id)->delete();
+
+            return redirect(route('user_dashboard'))->with('verification_successfull','Updated information verified');
+        }
+        else{
+
+            return redirect(route('user_dashboard'))->with('invalid_otp','OTP invalide');
+        }
+    }
+
+
     public function update_details(Request $request){
         $request->validate([
             'name' => 'required',
