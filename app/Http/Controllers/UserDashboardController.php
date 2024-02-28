@@ -24,7 +24,7 @@ class UserDashboardController extends Controller
 
         Mail::to(auth()->user()->email)->send(new OtpMail($otp));
 
-        return view('frontend.user_otp_verify')->with('OTP_sent','OTP sent to your email');
+        return view('frontend.user_otp_verify');
     }
     public function verify_user(Request $request){
 

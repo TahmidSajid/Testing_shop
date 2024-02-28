@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('content')
     <!-- breadcrumb_section - start
-                            ================================================== -->
+                                ================================================== -->
     <div class="breadcrumb_section">
         <div class="container">
             <ul class="breadcrumb_nav ul_li">
@@ -11,10 +11,10 @@
         </div>
     </div>
     <!-- breadcrumb_section - end
-                            ================================================== -->
+                                ================================================== -->
 
     <!-- account_section - start
-                            ================================================== -->
+                                ================================================== -->
     <section class="account_section section_space">
         <div class="container">
             <div class="row">
@@ -23,31 +23,31 @@
                         aria-orientation="vertical">
 
                         <!-- Account Dashboard Button
-                                ================================================== -->
+                                    ================================================== -->
                         <button class="nav-link text-start active w-100" id="v-pills-home-tab" data-bs-toggle="pill"
                             data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
                             aria-selected="true">Account Dashboard </button>
 
                         <!-- Acount Details Button
-                                ================================================== -->
+                                    ================================================== -->
                         <button class="nav-link text-start w-100" id="v-pills-profile-tab" data-bs-toggle="pill"
                             data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
                             aria-selected="false">Acount Details</button>
 
                         <!-- Change Password Button
-                                ================================================== -->
+                                    ================================================== -->
                         <button class="nav-link text-start w-100" id="v-pills-password-tab" data-bs-toggle="pill"
                             data-bs-target="#v-pills-password" type="button" role="tab"
                             aria-controls="v-pills-password" aria-selected="false">Change Password</button>
 
                         <!-- Change Address Button
-                                ================================================== -->
+                                    ================================================== -->
                         <button class="nav-link text-start w-100" id="v-pills-address-tab" data-bs-toggle="pill"
                             data-bs-target="#v-pills-address" type="button" role="tab" aria-controls="v-pills-address"
                             aria-selected="false">Change Address</button>
 
                         <!-- My Orders Button / Invoice Button
-                                ================================================== -->
+                                    ================================================== -->
                         <button class="nav-link text-start w-100" id="v-pills-messages-tab" data-bs-toggle="pill"
                             data-bs-target="#v-pills-messages" type="button" role="tab"
                             aria-controls="v-pills-messages" aria-selected="false">My Orders</button>
@@ -57,44 +57,48 @@
                     <div class="tab-content bg-light p-3" id="v-pills-tabContent">
 
                         <!-- Account Details Tab
-                                ================================================== -->
+                                    ================================================== -->
                         <div class="tab-pane fade show active text-center" id="v-pills-home" role="tabpanel"
                             aria-labelledby="v-pills-home-tab">
                             <h5>Welcome to Account {{ auth()->user()->name }}</h5>
                             <hr>
-                            <div class="row mb-3 ms-4">
+                            <div class="row mb-3 ms-4 d-flex align-items-center">
                                 <div class="col-lg-3 text-start">
-                                    <h4>Name :</h4>
+                                    <p style="font-size: 20px; font-weight:bold;">Name :</p>
                                 </div>
                                 <div class="col-lg-9 text-start">
-                                    <p style="font-size: 25px">{{ auth()->user()->name }}</p>
+                                    <p style="font-size: 18px">{{ auth()->user()->name }}</p>
                                 </div>
                             </div>
-                            <div class="row mb-3 ms-4">
+                            <div class="row mb-3 ms-4 d-flex align-items-center">
                                 <div class="col-lg-3 text-start">
-                                    <h4>Email :</h4>
+                                    <p style="font-size: 20px; font-weight:bold;">Email :</p>
                                 </div>
                                 <div class="col-lg-9 text-start">
-                                    <p style="font-size: 20px">{{ auth()->user()->email }}</p>
+                                    <p style="font-size: 18px">{{ auth()->user()->email }}</p>
                                 </div>
                             </div>
-                            <div class="row mb-3 ms-4">
+                            <div class="row mb-3 ms-4 d-flex align-items-center">
                                 <div class="col-lg-3 text-start">
-                                    <h4>Address :</h4>
+                                    <p style="font-size: 20px; font-weight:bold;">Address :</p>
                                 </div>
                                 <div class="col-lg-9 text-start">
-                                    <p style="font-size: 20px">{{ auth()->user()->address }}</p>
+                                    @if (auth()->user()->address)
+                                        <p style="font-size: 18px">{{ auth()->user()->address }}</p>
+                                    @else
+                                        <p class="text-warning" style="font-size: 18px">Not added yet</p>
+                                    @endif
                                 </div>
                             </div>
-                            <div class="row mb-3 ms-4">
+                            <div class="row mb-3 ms-4 d-flex align-items-center">
                                 <div class="col-lg-3 text-start">
-                                    <h4>Status :</h4>
+                                    <p style="font-size: 20px; font-weight:bold;">Status :</p>
                                 </div>
                                 <div class="col-lg-9 text-start">
                                     @if (auth()->user()->status === 'unverified')
                                         <div class="row">
                                             <div class="col-lg-4 text-danger">
-                                                <p style="font-size: 20px">{{ auth()->user()->status }}</p>
+                                                <p style="font-size: 18px">{{ auth()->user()->status }}</p>
                                             </div>
                                             <div class="col-lg-8">
                                                 <a class="btn btn-sm btn-success"
@@ -104,7 +108,7 @@
                                     @else
                                         <div class="row">
                                             <div class="col-lg-4 text-success">
-                                                <p style="font-size: 20px">{{ auth()->user()->status }}</p>
+                                                <p style="font-size: 18px">{{ auth()->user()->status }}</p>
                                             </div>
                                         </div>
                                     @endif
@@ -113,7 +117,7 @@
                         </div>
 
                         <!-- Account Setting Tab
-                                ================================================== -->
+                                    ================================================== -->
                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
                             aria-labelledby="v-pills-profile-tab">
                             <h5 class="text-center pb-3">Account Setting</h5>
@@ -164,7 +168,7 @@
                         </div>
 
                         <!-- Password Change Tab
-                                ================================================== -->
+                                    ================================================== -->
                         <div class="tab-pane fade" id="v-pills-password" role="tabpanel"
                             aria-labelledby="v-pills-password-tab">
                             <h5 class="text-center pb-3">Password Change</h5>
@@ -199,7 +203,7 @@
                         </div>
 
                         <!-- Address Tab
-                                ================================================== -->
+                                    ================================================== -->
                         <div class="tab-pane fade" id="v-pills-address" role="tabpanel"
                             aria-labelledby="v-pills-address-tab">
                             <h5 class="text-center pb-3">Address</h5>
@@ -216,7 +220,7 @@
                         </div>
 
                         <!-- Invoice Tab
-                                ================================================== -->
+                                    ================================================== -->
                         <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
                             aria-labelledby="v-pills-messages-tab">
                             <h5 class="text-center pb-3">Your Orders</h5>
@@ -249,10 +253,10 @@
         </div>
     </section>
     <!-- account_section - end
-                    ================================================== -->
+                        ================================================== -->
 
     <!-- newsletter_section - start
-                            ================================================== -->
+                                ================================================== -->
     <section class="newsletter_section">
         <div class="container">
             <div class="row align-items-center">
@@ -272,7 +276,7 @@
         </div>
     </section>
     <!-- newsletter_section - end
-                            ================================================== -->
+                                ================================================== -->
 @endsection
 
 <!-- Account Details alert

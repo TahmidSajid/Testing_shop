@@ -20,11 +20,15 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+
     <!-- Date Css -->
     @stack('dateCss')
 
     <!-- SelectIcons Css -->
     @stack('selectIconCss')
+
+    <!-- SelectIcons Css -->
+    @stack('slickCSS')
 
 </head>
 
@@ -1025,6 +1029,7 @@
                         <ul aria-expanded="false">
                             <li><a href="{{ route('company_history_view') }}">Company History</a></li>
                             <li><a href="{{ route('services.index') }}">Services</a></li>
+                            <li><a href="{{ route('members.index') }}">Members</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -1107,11 +1112,10 @@
     @stack('dateJs')
 
     <!-- Font Awesome Js -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     @stack('selectIconJs')
+
+    <!-- SelectIcons JS -->
+    @stack('slickJS')
 
     <!-- Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
