@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('content')
     <!-- breadcrumb_section - start
-                ================================================== -->
+                                ================================================== -->
     <div class="breadcrumb_section">
         <div class="container">
             <ul class="breadcrumb_nav ul_li">
@@ -11,11 +11,11 @@
         </div>
     </div>
     <!-- breadcrumb_section - end
-                ================================================== -->
+                                ================================================== -->
 
 
     <!-- about_section - start
-                ================================================== -->
+                                ================================================== -->
     <section class="about_section section_space">
         <div class="container">
             <div class="row align-items-center">
@@ -39,7 +39,7 @@
                                     <span><strong class="counter_count">{{ $total_happy_customers / 1000 }}</strong>K</span>
                                     <small>Happy Customers</small>
                                 @else
-                                    <span><strong class="counter_count">{{ $total_happy_customers}}</strong></span>
+                                    <span><strong class="counter_count">{{ $total_happy_customers }}</strong></span>
                                     <small>Happy Customers</small>
                                 @endif
                             </li>
@@ -54,11 +54,11 @@
         </div>
     </section>
     <!-- about_section - end
-                ================================================== -->
+                                ================================================== -->
 
 
     <!-- service_section - start
-                ================================================== -->
+                                ================================================== -->
     <section class="service_section bg_gray section_space">
         <div class="container">
             <div class="row justify-content-center">
@@ -79,82 +79,155 @@
         </div>
     </section>
     <!-- service_section - end
-                ================================================== -->
+                                ================================================== -->
 
 
     <!-- team_section - start
-                ================================================== -->
+                                ================================================== -->
     <section class="team_section section_space">
         <div class="container">
 
             <div class="row">
-                <div class="col col-lg-6 col-md-8 col-sm-10">
-                    <div class="team_section_title">
-                        <h2 class="title_text">Meet Our Team</h2>
-                        <p class="mb-0">Collaboratively administrate empowered markets via plug-and-play maintain
-                            networks. Dynamically usable procrastinate B2B users</p>
+                <div class="col col-lg-12 col-md-12 col-sm-12">
+                    <div class="team_section_title text-center">
+                        <h2 class="title_text">Meet Our Members</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col col-lg-12 col-md-12 col-sm-12 mt-4">
+                    <div class="team_section_title text-center mt-4">
+                        <h2 class="title_text">Heads</h2>
+                        <hr style="height: 4px ; width: 320px" class="mx-auto">
                     </div>
                 </div>
             </div>
 
             <div class="row justify-content-center">
-                <div class="col col-lg-3 col-md-4 col-sm-6">
-                    <div class="team_item">
-                        <div class="team_image">
-                            <img src="{{ asset('frontend-assets') }}/images/team/team_1.jpg" alt="image_not_found">
-                        </div>
-                        <div class="team_content">
-                            <h3 class="team_member_name">Harry Dor</h3>
-                            <span class="team_member_title">CEO/Founder</span>
-                        </div>
-                    </div>
-                </div>
+                <div class="multiple-items">
+                    @foreach ($members as $member)
+                        @if ($member->priority == 1)
+                            <div class="col col-lg-3 col-md-4 col-sm-6">
+                                <div class="team_item">
+                                    <div class="team_image">
+                                        @if ($member->image)
+                                            <img src="{{ asset('uploads/members_photos') }}/{{ $member->image }}"
+                                                alt="image_not_found">
+                                        @else
+                                            <img src="{{ asset('dashboard-assets/images/default_profile.png') }}"
+                                                alt="image_not_found">
+                                        @endif
 
-                <div class="col col-lg-3 col-md-4 col-sm-6">
-                    <div class="team_item">
-                        <div class="team_image">
-                            <img src="{{ asset('frontend-assets') }}/images/team/team_2.jpg" alt="image_not_found">
-                        </div>
-                        <div class="team_content">
-                            <h3 class="team_member_name">John Swim</h3>
-                            <span class="team_member_title">Fashion Designer</span>
-                        </div>
-                    </div>
+                                    </div>
+                                    <div class="team_content">
+                                        <h3 class="team_member_name">{{ $member->name }}</h3>
+                                        <span class="team_member_title">{{ $member->position }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
+            </div>
+        </div>
+    </section>
+    <!-- team_section - end
+                                ================================================== -->
 
-                <div class="col col-lg-3 col-md-4 col-sm-6">
-                    <div class="team_item">
-                        <div class="team_image">
-                            <img src="{{ asset('frontend-assets') }}/images/team/team_3.jpg" alt="image_not_found">
-                        </div>
-                        <div class="team_content">
-                            <h3 class="team_member_name">Harry Dor</h3>
-                            <span class="team_member_title">CEO/Founder</span>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col col-lg-3 col-md-4 col-sm-6">
-                    <div class="team_item">
-                        <div class="team_image">
-                            <img src="{{ asset('frontend-assets') }}/images/team/team_4.jpg" alt="image_not_found">
-                        </div>
-                        <div class="team_content">
-                            <h3 class="team_member_name">John Swim</h3>
-                            <span class="team_member_title">Fashion Designer</span>
-                        </div>
+    <!-- team_section - start
+                                ================================================== -->
+    <section class="team_section section_space">
+        <div class="container">
+
+            <div class="row">
+                <div class="col col-lg-12 col-md-12 col-sm-12">
+                    <div class="team_section_title text-center mt-4">
+                        <h2 class="title_text">Managments</h2>
+                        <hr style="height: 4px ; width: 320px" class="mx-auto">
                     </div>
                 </div>
             </div>
 
+            <div class="row justify-content-center">
+                <div class="multiple-items">
+                    @foreach ($members as $member)
+                        @if ($member->priority == 2)
+                            <div class="col col-lg-3 col-md-4 col-sm-6">
+                                <div class="team_item">
+                                    <div class="team_image">
+                                        @if ($member->image)
+                                            <img src="{{ asset('uploads/members_photos') }}/{{ $member->image }}"
+                                                alt="image_not_found">
+                                        @else
+                                            <img src="{{ asset('dashboard-assets/images/default_profile.png') }}"
+                                                alt="image_not_found">
+                                        @endif
+
+                                    </div>
+                                    <div class="team_content">
+                                        <h3 class="team_member_name">{{ $member->name }}</h3>
+                                        <span class="team_member_title">{{ $member->position }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
         </div>
     </section>
     <!-- team_section - end
-                ================================================== -->
+                                                    ================================================== -->
 
+    <!-- team_section - start
+                            ================================================== -->
+    <section class="team_section section_space">
+        <div class="container">
+
+            <div class="row">
+                <div class="col col-lg-12 col-md-12 col-sm-12">
+                    <div class="team_section_title text-center mt-4">
+                        <h2 class="title_text">Workers</h2>
+                        <hr style="height: 4px ; width: 320px" class="mx-auto">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="multiple-items">
+                    @foreach ($members as $member)
+                        @if ($member->priority == 3)
+                            <div class="col col-lg-3 col-md-4 col-sm-6">
+                                <div class="team_item">
+                                    <div class="team_image">
+                                        @if ($member->image)
+                                            <img src="{{ asset('uploads/members_photos') }}/{{ $member->image }}"
+                                                alt="image_not_found">
+                                        @else
+                                            <img src="{{ asset('dashboard-assets/images/default_profile.png') }}"
+                                                alt="image_not_found">
+                                        @endif
+
+                                    </div>
+                                    <div class="team_content">
+                                        <h3 class="team_member_name">{{ $member->name }}</h3>
+                                        <span class="team_member_title">{{ $member->position }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- team_section - end
+                                                ================================================== -->
 
     <!-- newsletter_section - start
-                ================================================== -->
+                                ================================================== -->
     <section class="newsletter_section">
         <div class="container">
             <div class="row align-items-center">
@@ -174,9 +247,12 @@
         </div>
     </section>
     <!-- newsletter_section - end
-                ================================================== -->
+                                ================================================== -->
 @endsection
 
+
+<!-- Counter Js resource
+================================================== -->
 
 @push('counterJs')
     <script src="{{ asset('frontend-assets/js/counterup.js') }}"></script>
@@ -187,3 +263,28 @@
         });
     </script>
 @endpush
+
+
+<!-- Slider resources start
+================================================== -->
+@push('slickCSS')
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+@endpush
+
+@push('slickJS')
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        $('.multiple-items').slick({
+            dots: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            arrows: false,
+            autoplay: true,
+            autoplaySpeed: 2000,
+        });
+    </script>
+@endpush
+<!-- Slider resources end
+================================================== -->

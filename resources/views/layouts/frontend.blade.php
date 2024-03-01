@@ -45,6 +45,8 @@
     <!-- review - css include -->
     @stack('reviewCss')
 
+    <!-- Slick CSS -->
+    @stack('slickCSS')
 </head>
 
 <body>
@@ -166,7 +168,7 @@
                     <div class="row align-items-center">
                         <div class="col col-md-3">
                             <div class="allcategories_dropdown">
-                                <button class="allcategories_btn collapsed" type="button" data-bs-toggle="collapse"
+                                <button class="allcategories_btn" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#allcategories_collapse" aria-expanded="false"
                                     aria-controls="allcategories_collapse">
                                     <svg role="img" xmlns="http://www.w3.org/2000/svg" width="32px"
@@ -178,7 +180,7 @@
                                     </svg>
                                     Browse categories
                                 </button>
-                                <div class="allcategories_collapse collapse" id="allcategories_collapse">
+                                <div class="allcategories_collapse" id="allcategories_collapse">
                                     <div class="card card-body">
                                         <ul class="allcategories_list ul_li_block">
                                             <li><a href="shop_grid.html"><i class="icon icon-Starship"></i> New
@@ -365,9 +367,12 @@
                                     </div>
                                 </div>
                                 <ul class="store_btns_group ul_li">
-                                    <li><a href="#!"><img
-                                                src="{{ asset('frontend-assets') }}/images/app_store.png"
-                                                alt="app_store"></a></li>
+                                    <li>
+                                        <a href="#!">
+                                            <img src="{{ asset('frontend-assets') }}/images/app_store.png"
+                                                alt="app_store">
+                                        </a>
+                                    </li>
                                     <li><a href="#!"><img
                                                 src="{{ asset('frontend-assets') }}/images/play_store.png"
                                                 alt="play_store"></a></li>
@@ -409,7 +414,9 @@
     <script src="{{ asset('frontend-assets') }}/js/jquery.min.js"></script>
     <script src="{{ asset('frontend-assets') }}/js/popper.min.js"></script>
     <script src="{{ asset('frontend-assets') }}/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js" integrity="sha512-fHXRw0CXruAoINU11+hgqYvY/PcsOWzmj0QmcSOtjlJcqITbPyypc8cYpidjPurWpCnlB8VKfRwx6PIpASCUkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"
+        integrity="sha512-fHXRw0CXruAoINU11+hgqYvY/PcsOWzmj0QmcSOtjlJcqITbPyypc8cYpidjPurWpCnlB8VKfRwx6PIpASCUkQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
     <!-- carousel - jquery plugins collection -->
@@ -435,6 +442,9 @@
 
     <!-- Counter Js -->
     @stack('counterJs')
+
+    <!-- slick Js -->
+    @stack('slickJS')
 
 </body>
 

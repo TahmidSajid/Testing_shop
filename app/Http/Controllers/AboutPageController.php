@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CompanyHistory;
+use App\Models\Members;
 use App\Models\Reviews;
 use App\Models\Services;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ class AboutPageController extends Controller
     public function about(){
         $services = Services::all();
         $history = CompanyHistory::first();
+        $members = Members::all();
 
 
         $four_rating_customers = [];
@@ -41,7 +43,7 @@ class AboutPageController extends Controller
         $total_satisfaction = $total_rating / $total_review;
         $satisfaction_percentage = round(($total_satisfaction/5)*100);
 
-        return view('frontend.about',compact('services','history','total_happy_customers','satisfaction_percentage'));
+        return view('frontend.about',compact('services','history','total_happy_customers','satisfaction_percentage','members'));
     }
 
 

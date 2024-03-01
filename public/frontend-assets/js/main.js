@@ -889,7 +889,7 @@
             var windowWidth = $(window).width();
             var dropdown = $(".allcategories_collapse");
 
-            if(windowWidth <= 991) {
+            if(windowWidth <= 1930) {
                 dropdown.addClass("collapse");
             } else {
                 dropdown.removeClass("collapse");

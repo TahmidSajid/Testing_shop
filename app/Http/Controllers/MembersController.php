@@ -41,7 +41,7 @@ class MembersController extends Controller
 
         if($request->hasFile('image')){
             $new_name = Str::slug($request->name).time().".".$request->file('image')->getClientOriginalExtension();
-            $img = Image::make($request->file('image'))->resize(300,200);
+            $img = Image::make($request->file('image'))->resize(540,540);
             $img->save(base_path('public/uploads/members_photos/'.$new_name),80);
             Members::find($member->id)->update([
                 'image'=> $new_name,
@@ -61,24 +61,51 @@ class MembersController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Members $members)
+    public function edit(Members $member)
     {
-        //
+        return view('dashboard.members.edit',compact('member'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Members $members)
+    public function update(Request $request, Members $member)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'position' => 'required',
+            'priority' => 'required',
+        ]);
+
+        Members::where('id',$member->id)->update([
+            'name' => $request->name,
+            'position' => $request->position,
+            'priority' => $request->priority,
+        ]);
+
+        if($request->hasFile('image')){
+            if($member->image){
+                unlink(base_path('public/uploads/members_photos/'.$member->image));
+            }
+            $new_name = Str::slug($request->name).time().".".$request->file('image')->getClientOriginalExtension();
+            $img = Image::make($request->file('image'))->resize(540,540);
+            $img->save(base_path('public/uploads/members_photos/'.$new_name),80);
+            Members::find($member->id)->update([
+                'image'=> $new_name,
+            ]);
+        }
+        return redirect(route('members.index'))->with('update_mamber','updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Members $members)
+    public function destroy(Members $member)
     {
-        //
+        if($member->image){
+            unlink(base_path('public/uploads/members_photos/'.$member->image));
+        }
+        Members::where('id',$member->id)->delete();
+        return back()->with('delete_mamber','delete successfully');
     }
 }
