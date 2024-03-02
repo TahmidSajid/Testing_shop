@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('company_histories', function (Blueprint $table) {
+        Schema::create('branches', function (Blueprint $table) {
             $table->id();
-            $table->string('sl_no');
-            $table->longText('history_heading');
-            $table->longText('history_paragraph');
-            $table->string('image');
+            $table->string('branch_name');
+            $table->longText('address');
+            $table->string('time');
+            $table->string('email');
+            $table->string('phone_number');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('company_histories');
+        Schema::dropIfExists('branches');
     }
 };

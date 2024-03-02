@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BranchesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerListController;
 use App\Http\Controllers\MembersController;
@@ -62,8 +63,8 @@ Route::get('/variation/select',[App\Http\Controllers\VariationsController::class
 Route::get('/variation/product/{id}',[App\Http\Controllers\VariationsController::class, 'variation_select_view'])->name('variation_select_view');
 Route::get('/variations/{id}',[App\Http\Controllers\VariationsController::class, 'variations'])->name('variations');
 Route::get('/cupons',[App\Http\Controllers\CuponsController::class, 'index'])->name('cupons');
-Route::get('/about/us/',[App\Http\Controllers\AboutUsController::class, 'company_history_view'])->name('company_history_view');
-Route::post('/add/company/history',[App\Http\Controllers\AboutUsController::class, 'add_history'])->name('add_history');
+Route::get('/about/us/',[App\Http\Controllers\CompanyHistoryController::class, 'company_history_view'])->name('company_history_view');
+Route::post('/add/company/history',[App\Http\Controllers\CompanyHistoryController::class, 'add_history'])->name('add_history');
 
 
 // category route package
@@ -73,4 +74,5 @@ Route::resource('customers', CustomerListController::class);
 Route::resource('products', ProductsController::class);
 Route::resource('services', ServicesController::class);
 Route::resource('members', MembersController::class);
+Route::resource('branch', BranchesController::class);
 // Route::resource('variation', VariationsController::class);

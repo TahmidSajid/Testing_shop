@@ -21,7 +21,7 @@
             <div class="row align-items-center">
                 <div class="col col-md-6 order-last">
                     <div class="about_image">
-                        <img src="{{ asset('frontend-assets') }}/images/about/about_image.jpg" alt="image_not_found">
+                        <img src="{{ asset('uploads/company_photos') }}/{{ $history->image }}" alt="image_not_found">
                     </div>
                 </div>
                 <div class="col col-md-6">

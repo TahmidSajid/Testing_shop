@@ -1032,6 +1032,14 @@
                             <li><a href="{{ route('members.index') }}">Members</a></li>
                         </ul>
                     </li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                            <i class="fa-solid fa-tags"></i>
+                            <span class="nav-text">Contact Us</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('branch.index') }}">Branches</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <div class="add-menu-sidebar">
                     <img src="images/calendar.png" alt="" class="mr-3">

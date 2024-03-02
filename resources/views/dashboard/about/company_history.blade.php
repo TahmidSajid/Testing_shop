@@ -8,7 +8,7 @@
                 </div>
                 <div class="card-body">
                     <div class="basic-form">
-                        <form action="{{ route('add_history') }}" method="POST">
+                        <form action="{{ route('add_history') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <label>History Heading</label>
                             <div class="form-group">
@@ -16,11 +16,32 @@
                                     @if ($company_history) value ="{{ $company_history->history_heading }}" @endif
                                     placeholder="Enter History Heading">
                             </div>
+                            @error('history_heading')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             <label>History Paragraph</label>
                             <div class="form-group">
                                 <textarea class="form-control" rows="10" style="resize: none;" name="history_paragraph"
                                     placeholder="Enter History Heading">@if ($company_history){{ $company_history->history_paragraph }}@endif</textarea>
                             </div>
+                            @error('history_paragraph')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                            <label>Company Image</label>
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Upload</span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="image">
+                                        <label class="custom-file-label">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                            @error('image')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             @if ($company_history)
                                 <div class="form-group">
                                     <button class="btn btn-primary" type="submit">Update History</button>
@@ -48,6 +69,9 @@
                         <h3>History Heading</h3>
                         <hr>
                         <p>{{ $company_history->history_paragraph }}</p>
+                        <h3>History Image</h3>
+                        <hr>
+                        <img style="width: 250px; height: 250px;" class="rounded" src="{{ asset('uploads/company_photos') }}/{{ $company_history->image }}" alt="img">
                     </div>
                 @else
                     <div class="card-body text-center">
